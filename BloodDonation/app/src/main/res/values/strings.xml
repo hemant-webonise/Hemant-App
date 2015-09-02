@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BloodDonation</string>
+    <string name="action_settings">Settings</string>
+    <string name="privacy_mode">Privacy</string>
+    <string name="profile_update">Edit Profile</string>
+    <string name="title_activity_search_acitvity">SearchAcitvity</string>
+    <string name="BloodGroup">Blood Group</string>
+
+    <string-array name="Blood_list">
+        <item>O Positive</item>
+        <item>O Negative</item>
+        <item>A Positive</item>
+        <item>A Negative</item>
+        <item>B Positive</item>
+        <item>B Negative</item>
+        <item>AB Positive</item>
+        <item>AB Negative</item>
+    </string-array>
+
+    <string name="title_activity_list_map">ListMapActivity</string>
+    <string name="title_section1">List</string>
+    <string name="title_section2">Map</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="customnotificationtitle">Title</string>
+    <string name="location">Location :</string>
+    <string name="customnotificationticker">Ticker</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_pager_with_page_adapter">PagerWithPageAdapter</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
