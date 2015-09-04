@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-
-    android:padding="8dp" >
+    android:padding="8dp"
+    android:descendantFocusability="afterDescendants"
+    >
 
     <!-- Thumbnail Image -->
     <com.android.volley.toolbox.NetworkImageView
@@ -45,13 +46,15 @@
         android:textSize="@dimen/genre" />
 
     <!-- Release Year -->
-    <TextView
+    <Button
+        android:background="@null"
         android:id="@+id/releaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:textColor="@color/year"
-        android:textSize="@dimen/year" />
+        android:textSize="@dimen/year"
+       />
 
 </RelativeLayout>

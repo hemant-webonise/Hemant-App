@@ -1,11 +1,21 @@
 package com.example.webonise.blooddonation.Fragments;
 
 
+import android.location.Criteria;
+import android.location.Location;
 import android.support.annotation.Nullable;
 
 import android.os.Bundle;
 
 import com.example.webonise.blooddonation.R;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceDetectionApi;
+import com.google.android.gms.location.places.PlaceFilter;
+import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
+import com.google.android.gms.location.places.PlaceReport;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,6 +64,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
         View view = inflater.inflate(R.layout.fragment_maps, container,false);
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(LocationServices.API)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
                 .build();
         setUpMapIfNeeded();
         return view;
@@ -96,17 +108,23 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setIndoorLevelPickerEnabled(true);
 
-        // Get LocationManager object from System Service LOCATION_SERVICE
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-//        LatLng l = PlaceDetectionApi.getCurrentPlace();
+        Criteria criteria = new Criteria();
+        String bestProvider = locationManager.getBestProvider(criteria, true);
+        Location location = locationManager.getLastKnownLocation(bestProvider);
 
-        mMap.addMarker(new MarkerOptions().position(INDIA).title("India").snippet("Pune"));
-        mMap.addMarker(new MarkerOptions().position(NEARINDIA).title("India").snippet("Near - Pune"));
+
+       /* LatLng LastLatLng =  new LatLng(location.getLatitude(),location.getLongitude());*/
+        mMap.addMarker(new MarkerOptions()
+                .position(INDIA)
+                .title("India")
+                .snippet("Pune"));
+       /* mMap.addMarker(new MarkerOptions().position(NEARINDIA).title("India").snippet("Near - Pune"));
 
         for (int i = 19; i < 28; i++) {
             LatLng ltlng = new LatLng(i, i + 10);
             mMap.addMarker(new MarkerOptions().position(ltlng).title("Steps :" + i));
-        }
+        }*/
 
         // zoom in the camera
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(INDIA, 15));
@@ -123,7 +141,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
 
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(newLatLng)
-                .title(newLatLng.toString());
+                .title(newLatLng.toString()
+                );
         mMap.addMarker(markerOptions);
 
         double longitude = newLatLng.longitude;

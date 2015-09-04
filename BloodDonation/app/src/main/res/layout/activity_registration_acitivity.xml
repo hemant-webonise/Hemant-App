@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout
-
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,31 +11,35 @@
     android:gravity="center">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/filler"
         android:hint="Name"
-        android:id="@+id/etName"/>
+        android:id="@+id/name"
+        android:inputType="textCapSentences"/>
+
+    <TextView
+        style="@style/filler"
+        android:hint="Blood"
+        android:id="@+id/tvBlood"
+        android:padding="10dp"
+        />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Blood"/>
+        style="@style/filler"
+        android:hint="Mobile Number"
+        android:inputType="number"
+        android:id="@+id/etNumber"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mobile Number"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="E-mail Address"/>
+        style="@style/filler"
+        android:hint="E-mail Address"
+        android:inputType="textEmailAddress"
+        android:id="@+id/etEmailAddress"/>
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Private Mode"
-        android:id="@+id/switch1"
+        android:id="@+id/PrivacyMode"
         android:layout_gravity="right" />
     <Button
         android:layout_width="wrap_content"

@@ -35,10 +35,17 @@ public class SplashActivity extends Activity {
                         Intent register = new Intent(SplashActivity.this,RegistrationActivity.class);
                         register.putExtra("btnText","Register");
                         startActivity(register);
+                        finish();
+
                        /* startActivity(new Intent("com.example.webonise.blooddonation.REGISTRATIONACTIVITY"));*/
                     }
                     else {
-                        startActivity(new Intent("com.example.webonise.blooddonation.SEARCHACTIVITY"));
+                        Intent search = new Intent(SplashActivity.this,SearchActivity.class);
+                        search.putExtra("btnText","Search");
+                        startActivity(search);
+                        finish();
+
+
                     }
 
                 }

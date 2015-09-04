@@ -2,15 +2,21 @@ package com.example.webonise.blooddonation.adapter;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.webonise.blooddonation.Fragments.ListFragment;
 import com.example.webonise.blooddonation.R;
 import com.example.webonise.blooddonation.app.AppController;
 import com.example.webonise.blooddonation.model.Movie;
@@ -18,10 +24,11 @@ import com.example.webonise.blooddonation.model.Movie;
 import java.util.List;
 
 
-public class CustomListAdapter extends BaseAdapter {
+public class CustomListAdapter extends BaseAdapter implements View.OnClickListener {
 	private Activity activity;
 	private LayoutInflater inflater;
 	private List<Movie> movieItems;
+    Button year;
 	ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
 	public CustomListAdapter(Activity activity, List<Movie> movieItems) {
@@ -60,7 +67,9 @@ public class CustomListAdapter extends BaseAdapter {
 		TextView title = (TextView) convertView.findViewById(R.id.title);
 		TextView rating = (TextView) convertView.findViewById(R.id.rating);
 		TextView genre = (TextView) convertView.findViewById(R.id.genre);
-		TextView year = (TextView) convertView.findViewById(R.id.releaseYear);
+		year = (Button) convertView.findViewById(R.id.releaseYear);
+        year.setOnClickListener(this);
+
 
 		// getting movie data for the row
 		Movie m = movieItems.get(position);
@@ -89,4 +98,31 @@ public class CustomListAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+
+
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.releaseYear :
+
+                new AlertDialog.Builder(activity)
+                        .setTitle("Really call?")
+                        .setMessage("Are you sure you want to Call?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                String call = year.getText().toString();
+                                Intent intent = new Intent(Intent.ACTION_DIAL);
+                                intent.setData(Uri.parse("tel:"+call));
+                                activity.startActivity(intent);
+                            }
+                        }).create().show();
+
+                break;
+
+        }
+
+
+    }
 }

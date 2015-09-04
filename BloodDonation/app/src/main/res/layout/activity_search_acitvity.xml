@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
-        android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -23,13 +22,13 @@
         android:layout_height="wrap_content">
         </android.widget.SearchView>
 
-    <Spinner
+    <!--<Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:layout_gravity="center_horizontal"
         android:entries="@array/Blood_list"
-        android:prompt="@string/BloodGroup"/>
+        android:prompt="@string/BloodGroup"/>-->
 
     <Button
         android:layout_width="match_parent"
@@ -39,6 +38,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="History"/>
+        android:text="History"
+        android:id="@+id/btnHistory"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12345661"
+        android:autoLink="web|email|phone"
+        android:linksClickable="true"/>
 
 </LinearLayout>
