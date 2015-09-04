@@ -1,0 +1,66 @@
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#F44336"
+            android:text="Contact detail"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:layout_below="@id/tvName"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="20dp"
+            android:autoLink="phone"
+            android:linksClickable="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tvLocation"
+            android:layout_marginLeft="5dp"/>
+
+        <Switch
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember"
+            android:id="@+id/switch2"
+            android:layout_below="@+id/title"
+            android:layout_alignBottom="@+id/tvLocation" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
