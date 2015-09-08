@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMapCli
         setUpMapIfNeeded();
 
         mMap.setOnMapClickListener(this);
-        btnOnMap=(Button)findViewById(R.id.btnOnMap);
+       /* btnOnMap=(Button)findViewById(R.id.btnOnMap);*/
         btnOnMap.setOnClickListener(this);
     }
 
@@ -79,10 +79,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMapCli
     private void setUpMap() {
         /*Use Of UiSetting in Maps*/
         mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setIndoorLevelPickerEnabled(true); mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(LocationServices.API)
-                .build();
         setUpMapIfNeeded();
+        mMap.getUiSettings().setIndoorLevelPickerEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setIndoorLevelPickerEnabled(true);

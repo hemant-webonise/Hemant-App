@@ -30,5 +30,21 @@
     <string name="title_activity_pager_with_page_adapter">PagerWithPageAdapter</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_history">HistoryActivity</string>
+    <string name="PrefFetchFailled">Blood Group "</string>
+    <string name="checkFlag">Check</string>
+    <string name="btnText">btnText</string>
+    <string name="Register">Register</string>
+    <string name="Search">Search</string>
+    <string name="setting">Setting</string>
+    <string name="privacy">Privacy</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="registration_activity">com.example.webonise.blooddonation.REGISTRATIONACTIVITY</string>
+    <string name="update">Update</string>
+    <string name="select_color">Pick a color</string>
+    <string name="comma"  formatted="false" > %s,%s </string>
+    <string name="recheck_dialog_title">Really Exit?</string>
+    <string name="check_dialog">Are you sure you want to exit?</string>
+    <string name="pick_blood">Pick a color</string>
+    <string name="register">Register</string>
 
 </resources>

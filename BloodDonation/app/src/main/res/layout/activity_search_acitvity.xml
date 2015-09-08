@@ -17,10 +17,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <android.widget.SearchView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        </android.widget.SearchView>
+
 
     <!--<Spinner
         android:layout_width="match_parent"
@@ -30,21 +27,40 @@
         android:entries="@array/Blood_list"
         android:prompt="@string/BloodGroup"/>-->
 
+    <RelativeLayout
+        style="@style/filler">
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/btnSearch"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="History"
-        android:id="@+id/btnHistory"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="12345661"
-        android:autoLink="web|email|phone"
-        android:linksClickable="true"/>
+        style="@style/AppTheme"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="H"
+        android:id="@+id/btnHistory"
+        android:background="@drawable/fab"
+        android:layout_gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+       />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="History"
+
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/btnHistory"
+            android:layout_alignEnd="@+id/btnHistory" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:background="@drawable/fabrect"
+            android:id="@+id/btnSearch"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/btnHistory"
+            android:layout_alignEnd="@+id/btnHistory" />
+    </RelativeLayout>
+
 
 </LinearLayout>

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.webonise.blooddonation.app.Constant;
+
 /**
  * Created by webonise on 1/9/15.
  */
@@ -12,9 +14,7 @@ public class SplashActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-    final String PREFER = "prefer";
     SharedPreferences pref;
-    int Check;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,26 +27,21 @@ public class SplashActivity extends Activity {
                         sleep(100);
                         logoTimer = logoTimer +100;
                     };
-                    pref = getApplicationContext().getSharedPreferences(PREFER, MODE_PRIVATE);
+                    pref = getApplicationContext().getSharedPreferences(Constant.PREFER, MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
-                    if(pref.getInt("Check",1)==1)
-                    {  editor.putInt("Check",2);
+                    if(pref.getInt(getString(R.string.checkFlag),1)==1)
+                    {  editor.putInt(getString(R.string.checkFlag),2);
                         editor.commit();
                         Intent register = new Intent(SplashActivity.this,RegistrationActivity.class);
-                        register.putExtra("btnText","Register");
+                        register.putExtra(getString(R.string.btnText),getString(R.string.Register));
                         startActivity(register);
-                        finish();
 
-                       /* startActivity(new Intent("com.example.webonise.blooddonation.REGISTRATIONACTIVITY"));*/
                     }
                     else {
                         Intent search = new Intent(SplashActivity.this,SearchActivity.class);
-                        search.putExtra("btnText","Search");
+                        search.putExtra(getString(R.string.btnText),getString(R.string.Search));
                         startActivity(search);
-                        finish();
-
-
-                    }
+                        }
 
                 }
 

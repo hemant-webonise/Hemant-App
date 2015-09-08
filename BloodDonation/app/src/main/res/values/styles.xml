@@ -8,9 +8,17 @@
     </style>
 
     <style name="filler" parent="AppTheme">
-        <item name="android:gravity">center</item>
+
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
+    </style>
+    <style name="fillerCenter" parent="filler">
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="fillerOutStand" parent="fillerCenter">
+        <item name="android:textColor">#F44336</item>
     </style>
 
 </resources>

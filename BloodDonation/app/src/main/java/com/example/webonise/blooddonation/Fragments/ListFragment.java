@@ -15,6 +15,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.webonise.blooddonation.R;
 import com.example.webonise.blooddonation.adapter.CustomListAdapter;
+import com.example.webonise.blooddonation.adapter.CustomListAdapterDonor;
 import com.example.webonise.blooddonation.app.AppController;
 import com.example.webonise.blooddonation.model.Movie;
 

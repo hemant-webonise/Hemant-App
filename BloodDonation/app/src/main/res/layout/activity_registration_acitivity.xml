@@ -11,26 +11,26 @@
     android:gravity="center">
 
     <EditText
-        style="@style/filler"
+        style="@style/fillerCenter"
         android:hint="Name"
         android:id="@+id/name"
         android:inputType="textCapSentences"/>
 
     <TextView
-        style="@style/filler"
+        style="@style/fillerOutStand"
         android:hint="Blood"
         android:id="@+id/tvBlood"
         android:padding="10dp"
         />
 
     <EditText
-        style="@style/filler"
+        style="@style/fillerCenter"
         android:hint="Mobile Number"
         android:inputType="number"
         android:id="@+id/etNumber"/>
 
     <EditText
-        style="@style/filler"
+        style="@style/fillerCenter"
         android:hint="E-mail Address"
         android:inputType="textEmailAddress"
         android:id="@+id/etEmailAddress"/>

@@ -2,6 +2,7 @@ package com.example.webonise.blooddonation.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.webonise.blooddonation.R;
@@ -14,6 +15,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     protected TextView tvLocation;
     protected TextView tvphoneNumber;
     protected TextView vTitle;
+    protected Switch Explore;
 
     public ContactViewHolder(View v) {
         super(v);
@@ -21,5 +23,6 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         tvLocation = (TextView)  v.findViewById(R.id.tvLocation);
         tvphoneNumber = (TextView)  v.findViewById(R.id.txtEmail);
         vTitle = (TextView) v.findViewById(R.id.title);
+        Explore = (Switch)v.findViewById(R.id.Explore);
     }
 }
