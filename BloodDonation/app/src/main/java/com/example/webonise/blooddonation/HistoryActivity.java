@@ -1,5 +1,6 @@
 package com.example.webonise.blooddonation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,11 +12,13 @@ import com.example.webonise.blooddonation.adapter.ContactAdapter;
 import com.example.webonise.blooddonation.model.ContactInfo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnAddHistory;
+    Button btnToHistoryData;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     ContactAdapter contactAdapter;
@@ -33,7 +36,10 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
 
 
         btnAddHistory=(Button)findViewById(R.id.btnAddHistory);
+        btnToHistoryData=(Button)findViewById(R.id.btnToHistoryData);
+
         btnAddHistory.setOnClickListener(this);
+        btnToHistoryData.setOnClickListener(this);
     }
     private List<ContactInfo> createList(int size) {
 
@@ -42,7 +48,12 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
             ContactInfo ci = new ContactInfo();
             ci.name = ContactInfo.NAME_PREFIX + i;
             ci.location = ContactInfo.SURNAME_PREFIX + i;
-            ci.phoneNumber = ContactInfo.EMAIL_PREFIX + i + "1";
+
+
+            final Calendar c = Calendar.getInstance();
+            String date = String.valueOf(new StringBuilder().append(c.get(Calendar.YEAR)).append(" ").append("-").append(c.get(Calendar.MONTH)+ 1).append("-").append(c.get(Calendar.DAY_OF_MONTH)));
+
+            ci.date = date;
             result.add(ci);
         }
 
@@ -57,6 +68,9 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
                 recyclerView.setAdapter(contactAdapter);
                 Clicked++;
                 break;
+            case R.id.btnToHistoryData:
+                Intent fillHistory = new Intent(this,FillHistoryActivity.class);
+                startActivity(fillHistory);
 
         }
 

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by webonise on 7/9/15.
  */
-public class Donor {
+public class Donor extends Response{
 
     private List<DataEntity> data;
 

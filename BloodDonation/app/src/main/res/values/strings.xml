@@ -41,10 +41,18 @@
     <string name="registration_activity">com.example.webonise.blooddonation.REGISTRATIONACTIVITY</string>
     <string name="update">Update</string>
     <string name="select_color">Pick a color</string>
-    <string name="comma"  formatted="false" > %s,%s </string>
+    <string name="comma" formatted="false"> %s,%s </string>
     <string name="recheck_dialog_title">Really Exit?</string>
     <string name="check_dialog">Are you sure you want to exit?</string>
     <string name="pick_blood">Pick a color</string>
     <string name="register">Register</string>
+    <string name="emailFormat">Format-abc@d.com</string>
+    <string name="check_email_address">Please fill the Email-Address.</string>
+    <string name="check_valid_phone">The number Should contain 6 - 13 Number.</string>
+    <string name="check_phone">Please fill the Number.</string>
+    <string name="check_blood_group">Please select your BloodGroup !</string>
+    <string name="check_name">Please fill the Name.</string>
+    <string name="location_unfetched">Location was not fetched properly</string>
+    <string name="title_activity_fill_history">FillHistoryActivity</string>
 
 </resources>

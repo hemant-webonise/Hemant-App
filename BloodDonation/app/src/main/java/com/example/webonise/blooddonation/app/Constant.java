@@ -5,6 +5,9 @@ package com.example.webonise.blooddonation.app;
  */
 public class Constant {
     public static String PREFER = "prefer";
+    public static String TAG_Lat= "Lat";
+    public static String TAG_Lng= "Lng";
+    public static String TAG_bloodGroup="bloodGroup";
     public static String JSONURL = "{  \n" +
             "   \"data\":[  \n" +
             "      {  \n" +

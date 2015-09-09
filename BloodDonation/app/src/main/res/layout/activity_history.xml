@@ -8,6 +8,20 @@
         android:layout_height="wrap_content"
         android:text="Add a Moment"
         android:id="@+id/btnAddHistory"/>
+    <Button
+        style="@style/AppTheme"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="H"
+        android:id="@+id/btnToHistoryData"
+        android:background="@drawable/fab"
+        android:layout_gravity="right"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
     <android.support.v7.widget.RecyclerView
         android:layout_below="@id/btnAddHistory"
         android:id="@+id/cardList"

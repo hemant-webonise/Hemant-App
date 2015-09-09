@@ -57,10 +57,7 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
-        </activity>
+
         <activity
             android:name=".PagerActivity"
             android:label="@string/title_activity_pager_with_page_adapter" >
@@ -68,6 +65,10 @@
         <activity
             android:name=".HistoryActivity"
             android:label="@string/title_activity_history" >
+        </activity>
+        <activity
+            android:name=".FillHistoryActivity"
+            android:label="@string/title_activity_fill_history" >
         </activity>
     </application>
 

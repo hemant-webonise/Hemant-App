@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.webonise.blooddonation.Fragments.ListFragment;
 import com.example.webonise.blooddonation.Fragments.ListFragmentDonor;
 import com.example.webonise.blooddonation.Fragments.MapFragment;
 

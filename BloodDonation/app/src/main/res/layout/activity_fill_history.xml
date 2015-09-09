@@ -1,0 +1,43 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.webonise.blooddonation.FillHistoryActivity">
+
+        <EditText
+            android:id="@+id/etNameHospital"
+            style="@style/fillerCenter"
+            android:layout_alignParentTop="true"
+            android:hint="Name of the Hospital"
+            android:inputType="textCapSentences" />
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            style="@style/filler"
+
+            android:layout_below="@id/etNameHospital">
+
+
+        </DatePicker>
+
+        <ImageButton
+            android:id="@+id/btnImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/datePicker"
+            android:src="@drawable/webo"
+            android:background="@null"/>
+
+        <Button
+            android:id="@+id/btnAddHistory"
+            style="@style/fillerCenter"
+            android:layout_below="@id/btnImage"
+            android:text="Save Details" />
+
+
+    </RelativeLayout>
+</ScrollView>

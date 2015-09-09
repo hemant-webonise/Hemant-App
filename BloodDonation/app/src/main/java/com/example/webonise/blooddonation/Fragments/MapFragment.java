@@ -82,26 +82,30 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         /*btnOnMap = (Button) getView().findViewById(R.id.btnOnMap);*/
-        btnOnMap.setOnClickListener(this);
+       /* btnOnMap.setOnClickListener(this);*/
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(final Marker marker) {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Really call?\n"+marker.getTitle())
-                        .setMessage("Are you sure you want to Call?\n"+marker.getSnippet())
-                        .setNegativeButton(android.R.string.no, null)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                String call = marker.getSnippet();
-                                Intent intent = new Intent(Intent.ACTION_DIAL);
-                                intent.setData(Uri.parse("tel:" + call));
-                                getActivity().startActivity(intent);
-                            }
-                        }).create().show();
+                callerDialog(marker);
             }
         });
 
+    }
+
+    private void callerDialog(final Marker marker) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Really call?\n"+marker.getTitle())
+                .setMessage("Are you sure you want to Call?\n"+marker.getSnippet())
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        String call = marker.getSnippet();
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + call));
+                        getActivity().startActivity(intent);
+                    }
+                }).create().show();
     }
 
     @Override

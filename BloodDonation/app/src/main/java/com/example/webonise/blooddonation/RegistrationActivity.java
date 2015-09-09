@@ -26,6 +26,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.webonise.blooddonation.app.Constant;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
@@ -42,7 +43,6 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
     EditText name, etEmailAddress, etNumber;
     TextView tvBlood;
     Switch privacyMode;
-    final String PREFER = "prefer";
     SharedPreferences pref;
     Button btn;
     Bundle bundle;
@@ -54,7 +54,7 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_acitivity);
-        pref = getApplicationContext().getSharedPreferences(PREFER, MODE_PRIVATE);
+        pref = getApplicationContext().getSharedPreferences(Constant.PREFER, MODE_PRIVATE);
         initiateLocationWithCheck();
         initialize();
         bundle = getIntent().getExtras();
@@ -215,24 +215,24 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
 
     private boolean validateFields() {
         if(isEmpty(name)){
-            name.setError("Please fill the Name.");
+            name.setError(getString(R.string.check_name));
         }
         else if(isEmpty(tvBlood)){
-            Toast.makeText(this,"Please select your BloodGroup !",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.check_blood_group),Toast.LENGTH_LONG).show();
            /* tvBlood.setError("Please Select Blood Type.");*/
         }
         else if (isEmpty(etNumber)){
-            etNumber.setError("Please fill the Number.");
+            etNumber.setError(getString(R.string.check_phone));
         }
         else if (!isValidPhoneNumber(etNumber.getText())){
-            etNumber.setError("The number Should contain 6 - 13 Number.");
+            etNumber.setError(getString(R.string.check_valid_phone));
         }
         else if (isEmpty(etEmailAddress)){
-            etEmailAddress.setError("Please fill the EmailAddress.");
+            etEmailAddress.setError(getString(R.string.check_email_address));
         }
         else if (!isValidEmail(etEmailAddress.getText())){
-            etEmailAddress.setError("Please fill the Email-Address.");
-            Toast.makeText(this,"Format-abc@d.com",Toast.LENGTH_LONG).show();
+            etEmailAddress.setError(getString(R.string.check_email_address));
+            Toast.makeText(this,getString(R.string.emailFormat),Toast.LENGTH_LONG).show();
         }
         else{
             return true;

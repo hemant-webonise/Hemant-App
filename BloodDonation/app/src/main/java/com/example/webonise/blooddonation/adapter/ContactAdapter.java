@@ -4,10 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.Switch;
 
 import com.example.webonise.blooddonation.R;
 import com.example.webonise.blooddonation.model.ContactInfo;
@@ -37,18 +33,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactViewHolder>  {
         contactInfo = contactList.get(i);
         contactViewHolder.vName.setText(contactInfo.name);
         contactViewHolder.tvLocation.setText(contactInfo.location);
-        contactViewHolder.tvphoneNumber.setText(contactInfo.phoneNumber);
+        contactViewHolder.tvDate.setText(contactInfo.date);
         contactViewHolder.vTitle.setText(contactInfo.name + " " + contactInfo.location);
-        contactViewHolder.Explore.setChecked(false);
-       /* contactViewHolder.Explore.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(isChecked){
 
-                }else {
-                }
-            }
-        });*/
 
     }
     @Override

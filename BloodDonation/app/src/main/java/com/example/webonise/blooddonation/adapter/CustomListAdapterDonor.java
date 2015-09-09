@@ -84,8 +84,13 @@ public class CustomListAdapterDonor extends BaseAdapter implements View.OnClickL
             Location location1 = new Location(LocationManager.GPS_PROVIDER);
             location1.setLatitude(dataEntities.get(position).getLat());
             location1.setLongitude(dataEntities.get(position).getLng());
+            if(location!=null){
             String temp = String.valueOf((int) location.distanceTo(location1)/1000)+"Km";
             tvDistance.setText(temp);
+            }
+            else {
+                Toast.makeText(activity,activity.getString(R.string.location_unfetched),Toast.LENGTH_LONG).show();
+            }
         }else{
             gpsTracker.showSettingsAlert();
         }

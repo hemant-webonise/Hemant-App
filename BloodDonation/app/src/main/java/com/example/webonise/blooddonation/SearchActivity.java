@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.webonise.blooddonation.app.Constant;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -112,16 +115,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG).show();
         Intent pager = new Intent(this, PagerActivity.class);
         pager.putExtra("SELECTED", text);
-        pager.putExtra("Lat",  gps.getLatitude());
-        pager.putExtra("Lng", gps.getLongitude());
+        pager.putExtra(Constant.TAG_Lat,  gps.getLatitude());
+        pager.putExtra(Constant.TAG_Lng, gps.getLongitude());
         startActivity(pager);
     }
 
     private void getJSONOnBloodType(CharSequence value) throws JSONException {
         JSONObject locationUpdateJson = new JSONObject();
-        locationUpdateJson.put("lat",gps.getLatitude());
-        locationUpdateJson.put("lng",gps.getLatitude());
-        locationUpdateJson.put("bloodGroup", value);
+        locationUpdateJson.put(Constant.TAG_Lat,gps.getLatitude());
+        locationUpdateJson.put(Constant.TAG_Lng,gps.getLatitude());
+        locationUpdateJson.put(Constant.TAG_bloodGroup, value);
         Toast.makeText(this,locationUpdateJson.toString(),Toast.LENGTH_LONG).show();
         Log.w("-",locationUpdateJson.toString());
     }

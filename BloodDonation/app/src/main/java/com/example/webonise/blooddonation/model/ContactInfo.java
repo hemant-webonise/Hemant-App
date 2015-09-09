@@ -6,8 +6,8 @@ package com.example.webonise.blooddonation.model;
 public class ContactInfo {
     public String name;
     public String location;
-    public String phoneNumber;
+    public String date;
     public static final String NAME_PREFIX = "Name : ";
     public static final String SURNAME_PREFIX = "Location : ";
-    public static final String EMAIL_PREFIX = "91888370";
+    public static final String DATE_PREFIX = "91888370";
 }
