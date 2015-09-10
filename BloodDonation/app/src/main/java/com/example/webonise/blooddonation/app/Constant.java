@@ -8,6 +8,7 @@ public class Constant {
     public static String TAG_Lat= "Lat";
     public static String TAG_Lng= "Lng";
     public static String TAG_bloodGroup="bloodGroup";
+    public static String EMPTY = "No Data Present";
     public static String JSONURL = "{  \n" +
             "   \"data\":[  \n" +
             "      {  \n" +

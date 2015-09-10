@@ -57,6 +57,7 @@ public class ListFragmentDonor extends Fragment {
                     public void onResponse(JSONArray response) {
                         hidePDialog();
 
+
                     }
                 }, new Response.ErrorListener() {
             public static final String TAG ="Tag" ;

@@ -18,7 +18,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     public ContactViewHolder(View v) {
         super(v);
-        vName =  (TextView) v.findViewById(R.id.tvName);
+        vName =  (TextView) v.findViewById(R.id.tvLocation);
         tvLocation = (TextView)  v.findViewById(R.id.tvLocation);
         tvDate = (TextView)  v.findViewById(R.id.tvDate);
         vTitle = (TextView) v.findViewById(R.id.title);

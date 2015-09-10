@@ -30,7 +30,7 @@ public class SplashActivity extends Activity {
                     pref = getApplicationContext().getSharedPreferences(Constant.PREFER, MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
                     if(pref.getInt(getString(R.string.checkFlag),1)==1)
-                    {  editor.putInt(getString(R.string.checkFlag),2);
+                    {
                         editor.commit();
                         Intent register = new Intent(SplashActivity.this,RegistrationActivity.class);
                         register.putExtra(getString(R.string.btnText),getString(R.string.Register));

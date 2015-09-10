@@ -28,7 +28,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_acitvity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+        //Title and subtitle
+        toolbar.setTitle("Blood Donation ");
+        toolbar.setSubtitle("What's your blood type ?");
+
+
         setSupportActionBar(toolbar);
         btnSearch=(Button)findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(this);
@@ -60,7 +64,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         if (id == R.id.editProfile) {
             Toast.makeText(getApplicationContext(),getString(R.string.update_profile),Toast.LENGTH_LONG).show();
             startActivity(new Intent(getString(R.string.registration_activity)).putExtra(getString(R.string.btnText),getString(R.string.update)));
-            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -105,7 +108,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 break;
            case R.id.btnHistory:
-               startActivity(new Intent(SearchActivity.this,HistoryActivity.class));
+               startActivity(new Intent(SearchActivity.this,HistoryActivityWithSQL.class));
 
 
         }

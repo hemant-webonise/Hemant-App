@@ -19,6 +19,8 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -46,7 +48,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class MapFragment extends Fragment implements GoogleMap.OnMapClickListener, View.OnClickListener {
+public class MapFragment extends Fragment {
 
     GoogleApiClient mGoogleApiClient;
     Button btnOnMap;
@@ -95,8 +97,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
 
     private void callerDialog(final Marker marker) {
         new AlertDialog.Builder(getActivity())
-                .setTitle("Really call?\n"+marker.getTitle())
-                .setMessage("Are you sure you want to Call?\n"+marker.getSnippet())
+                .setTitle("Really call?\n" + marker.getTitle())
+                .setMessage("Are you sure you want to Call?\n" + marker.getSnippet())
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -130,7 +132,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
 
 
     private void setUpMap() {
-
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setIndoorLevelPickerEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -140,10 +141,21 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
         gpsTracker = new GPSTracker(getActivity());
         // check if GPS enabled
         if (gpsTracker.canGetLocation()) {
-
-            // Create a LatLng object for the current location
             LatLng latLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            // Create a LatLng object for the current location
+            mMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                                                                                                                                                                                                                                                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.index)));
 
+
+            CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(latLng,10);
+            mMap.animateCamera(yourLocation);
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(latLng)              // Sets the center of the map to LatLng
+                    .zoom(5)                     // Sets the zoom
+                    .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             Gson gson = new Gson();
             Donor donorsObj = gson.fromJson(Constant.JSONURL, Donor.class);
             dataEntities = donorsObj.getData();
@@ -157,26 +169,13 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
                 }
             }
 
-            mMap.addMarker(new MarkerOptions().position(INDIA).title("Maharastra").snippet("Pune"));
-
-            CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(INDIA, 12);
-            mMap.animateCamera(yourLocation);
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(INDIA)      // Sets the center of the map to LatLng (refer to previous snippet)
-                    .zoom(17)                   // Sets the zoom
-                    .bearing(90)                // Sets the orientation of the camera to east
-                    .tilt(30)                   // Sets the tilt of the camera to 30 degrees
-                    .build();                   // Creates a CameraPosition from the builder
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-
         } else {
             gpsTracker.showSettingsAlert();
         }
 
     }
 
-    @Override
+   /* @Override
     public void onMapClick(LatLng latLng) {
         LatLng newLatLng = latLng;
         MarkerOptions markerOptions = new MarkerOptions()
@@ -217,6 +216,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapClickListene
     public void onClick(View view) {
 
     }
-
+*/
 
 }

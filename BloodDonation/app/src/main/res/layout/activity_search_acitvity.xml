@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/home"
     tools:context="com.example.webonise.blooddonation.SearchActivity">
 
     <android.support.v7.widget.Toolbar
@@ -24,15 +25,17 @@
             android:id="@+id/btnSearch"
            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/fabrect"
+            android:textSize="50dp"
             android:text="Search"
-            android:padding="50dp"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="44dp" />
 
         <Button
             android:id="@+id/btnHistory"
             style="@style/filler"
             android:text="History"
+            android:background="@null"
             android:layout_alignParentTop="true"
              />
 

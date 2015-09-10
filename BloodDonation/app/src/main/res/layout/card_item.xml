@@ -20,7 +20,7 @@
             android:textSize="25dp"/>
 
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tvLocation"
             style="@style/filler"
             android:text="Name"
             android:textSize="20dp"

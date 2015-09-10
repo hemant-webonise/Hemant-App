@@ -48,11 +48,8 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
             ContactInfo ci = new ContactInfo();
             ci.name = ContactInfo.NAME_PREFIX + i;
             ci.location = ContactInfo.SURNAME_PREFIX + i;
-
-
             final Calendar c = Calendar.getInstance();
             String date = String.valueOf(new StringBuilder().append(c.get(Calendar.YEAR)).append(" ").append("-").append(c.get(Calendar.MONTH)+ 1).append("-").append(c.get(Calendar.DAY_OF_MONTH)));
-
             ci.date = date;
             result.add(ci);
         }

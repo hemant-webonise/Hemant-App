@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.example.webonise.blooddonation.GPSTracker;
 import com.example.webonise.blooddonation.R;
 import com.example.webonise.blooddonation.model.Donor;
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
@@ -67,7 +66,7 @@ public class CustomListAdapterDonor extends BaseAdapter implements View.OnClickL
             convertView = inflater.inflate(R.layout.list_row_donor, null);
 
 
-        tvName = (TextView) convertView.findViewById(R.id.tvName);
+        tvName = (TextView) convertView.findViewById(R.id.tvLocation);
         tvDistance = (TextView) convertView.findViewById(R.id.tvDistance);
         tvPhone = (Button) convertView.findViewById(R.id.tvPhone);
         tvPhone.setOnClickListener(this);

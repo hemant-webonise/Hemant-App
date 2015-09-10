@@ -1,50 +1,66 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationAcitivity"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:background="@drawable/home">
 
-    <EditText
-        style="@style/fillerCenter"
-        android:hint="Name"
-        android:id="@+id/name"
-        android:inputType="textCapSentences"/>
-
-    <TextView
-        style="@style/fillerOutStand"
-        android:hint="Blood"
-        android:id="@+id/tvBlood"
-        android:padding="10dp"
-        />
-
-    <EditText
-        style="@style/fillerCenter"
-        android:hint="Mobile Number"
-        android:inputType="number"
-        android:id="@+id/etNumber"/>
-
-    <EditText
-        style="@style/fillerCenter"
-        android:hint="E-mail Address"
-        android:inputType="textEmailAddress"
-        android:id="@+id/etEmailAddress"/>
-
-    <Switch
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Private Mode"
-        android:id="@+id/PrivacyMode"
-        android:layout_gravity="right" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnRegister"/>
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:alpha="0.3"
+        android:background="@color/primary_dark"></View>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".RegistrationAcitivity">
+
+        <EditText
+            android:id="@+id/name"
+            style="@style/filler"
+            android:hint="Name"
+            android:inputType="textCapSentences" />
+
+        <TextView
+            android:id="@+id/tvBlood"
+            style="@style/fillerOutStand"
+            android:hint="Blood"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etNumber"
+            style="@style/filler"
+            android:hint="Mobile Number"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etEmailAddress"
+            style="@style/filler"
+            android:hint="E-mail Address"
+            android:inputType="textEmailAddress" />
+
+        <Switch
+            android:id="@+id/PrivacyMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Private Mode" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 </RelativeLayout>

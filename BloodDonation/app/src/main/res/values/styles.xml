@@ -1,13 +1,15 @@
 <resources>
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
 
+    </style>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#F44336</item>
-        <item name="colorPrimaryDark">#D32F2F</item>
-        <item name="colorAccent">#FF5722</item>
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
     </style>
 
-    <style name="filler" parent="AppTheme">
+    <style name="filler" parent="MyMaterialTheme.Base">
 
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -17,8 +19,8 @@
     </style>
 
 
-    <style name="fillerOutStand" parent="fillerCenter">
-        <item name="android:textColor">#F44336</item>
+    <style name="fillerOutStand" parent="filler">
+        <item name="android:textColor">#ff5252</item>
     </style>
 
 </resources>

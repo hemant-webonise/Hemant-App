@@ -13,6 +13,8 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -39,7 +41,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class RegistrationActivity extends Activity implements View.OnClickListener {
+public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     EditText name, etEmailAddress, etNumber;
     TextView tvBlood;
     Switch privacyMode;
@@ -48,19 +50,29 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
     Bundle bundle;
     SharedPreferences.Editor editor;
     GPSTracker gps;
+    Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_acitivity);
+
         pref = getApplicationContext().getSharedPreferences(Constant.PREFER, MODE_PRIVATE);
         initiateLocationWithCheck();
         initialize();
         bundle = getIntent().getExtras();
         btn.setText(bundle.getString(getString(R.string.btnText)));
         if (btn.getText().toString().equalsIgnoreCase(getString(R.string.update))) {
+            toolbar.setTitle("Update");
+            toolbar.setSubtitle("Let's update...");
+            setSupportActionBar(toolbar);
             retrieveStoredStates();
+        }else{
+            //Title and subtitle
+            toolbar.setTitle("Registration");
+            toolbar.setSubtitle("Let's register...");
+            setSupportActionBar(toolbar);
         }
         setClickListeners();
     }
@@ -91,6 +103,7 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
         name = (EditText) findViewById(R.id.name);
         tvBlood = (TextView) findViewById(R.id.tvBlood);
         btn = (Button) findViewById(R.id.btnRegister);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
     private void setClickListeners() {
@@ -153,7 +166,11 @@ public class RegistrationActivity extends Activity implements View.OnClickListen
                 if (btn.getText().toString().equalsIgnoreCase(getString(R.string.register))) {
                     if(validateFields()){
                     putInSharedPreferences();
-                        moveToSearchActivity();
+                    /*Registration Done So now we change the flag and so it would be able to go to next screen*/
+
+                    editor.putInt(getString(R.string.checkFlag), 2);
+                    editor.commit();
+                    moveToSearchActivity();
                     }
                 } else if (btn.getText().toString().equalsIgnoreCase(getString(R.string.update))) {
                     if(validateFields()){

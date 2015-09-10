@@ -8,36 +8,40 @@
         android:layout_height="match_parent"
         tools:context="com.example.webonise.blooddonation.FillHistoryActivity">
 
-        <EditText
-            android:id="@+id/etNameHospital"
-            style="@style/fillerCenter"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <EditText
+            android:id="@+id/etLocation"
+            style="@style/fillerCenter"
+            android:layout_below="@+id/toolbar"
             android:hint="Name of the Hospital"
             android:inputType="textCapSentences" />
 
         <DatePicker
-            android:id="@+id/datePicker"
+            android:id="@+id/dpDate"
             style="@style/filler"
-
-            android:layout_below="@id/etNameHospital">
-
-
-        </DatePicker>
+            android:layout_below="@id/etLocation"></DatePicker>
 
         <ImageButton
             android:id="@+id/btnImage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/datePicker"
-            android:src="@drawable/webo"
-            android:background="@null"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dpDate"
+            android:background="@null"
+            android:src="@drawable/webo" />
 
         <Button
             android:id="@+id/btnAddHistory"
             style="@style/fillerCenter"
             android:layout_below="@id/btnImage"
             android:text="Save Details" />
-
 
     </RelativeLayout>
 </ScrollView>

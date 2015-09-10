@@ -20,7 +20,7 @@
         android:icon="@drawable/webo"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/MyMaterialTheme" >
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name" >
@@ -69,6 +69,10 @@
         <activity
             android:name=".FillHistoryActivity"
             android:label="@string/title_activity_fill_history" >
+        </activity>
+        <activity
+            android:name=".HistoryActivityWithSQL"
+            android:label="@string/title_activity_history_activity_with_sql" >
         </activity>
     </application>
 

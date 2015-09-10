@@ -6,15 +6,10 @@
     android:orientation="vertical"
     android:gravity="center"
     android:minHeight="30dp"
-   >
+    >
 
     <TextView
-        style="@style/filler"
-        android:background="#F44336"
-        android:id="@+id/textView" />
-
-    <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvLocation"
         style="@style/filler"
         android:text="Name"
         android:textSize="20dp"
@@ -33,7 +28,7 @@
 
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_below="@+id/tvName"/>
+        android:layout_below="@+id/tvLocation"/>
 
     <TextView
         android:id="@+id/tvDistance"
@@ -42,8 +37,8 @@
         android:text="Location"
         android:textSize="20dp"
         android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/tvName"
-        android:layout_alignEnd="@+id/tvName" />
+        android:layout_alignRight="@+id/tvLocation"
+        android:layout_alignEnd="@+id/tvLocation" />
 
     <Switch
         android:layout_width="wrap_content"
