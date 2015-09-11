@@ -14,18 +14,19 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
          />
-    <View
+   <!-- <View
         android:layout_width="500dp"
         android:layout_height="500dp"
         android:layout_below="@id/toolbar"
         android:alpha="0.2"
         android:background="@drawable/background">
-    </View>
+    </View>-->
     <Button
         style="@style/MyMaterialTheme"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="H"
+        android:text="+"
+        android:textColor="@color/icons"
         android:id="@+id/btnToHistoryData"
         android:background="@drawable/fab"
         android:layout_gravity="right"

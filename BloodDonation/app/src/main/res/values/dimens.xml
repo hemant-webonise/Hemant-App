@@ -6,4 +6,7 @@
     <dimen name="rating">15dip</dimen>
     <dimen name="genre">13dip</dimen>
     <dimen name="year">12dip</dimen>
+    <dimen name="text">20sp</dimen>
+    <dimen name="margin_registration">10dp</dimen>
+    <dimen name="padding_button">5dp</dimen>
 </resources>

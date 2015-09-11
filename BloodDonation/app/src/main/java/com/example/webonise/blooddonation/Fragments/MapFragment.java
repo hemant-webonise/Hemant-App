@@ -4,8 +4,6 @@ package com.example.webonise.blooddonation.Fragments;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Criteria;
-import android.location.Location;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
@@ -19,19 +17,13 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.LocationManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +35,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 
 public class MapFragment extends Fragment {
@@ -143,9 +133,9 @@ public class MapFragment extends Fragment {
         if (gpsTracker.canGetLocation()) {
             LatLng latLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
             // Create a LatLng object for the current location
-            mMap.addMarker(new MarkerOptions()
+           /* mMap.addMarker(new MarkerOptions()
                             .position(latLng)
-                                                                                                                                                                                                                                                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.index)));
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.index)));*/
 
 
             CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(latLng,10);

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context="com.example.webonise.blooddonation.SearchActivity">
 
     <android.support.v7.widget.Toolbar
@@ -20,25 +19,42 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/banersecound"
+
        >
+
+     <!--   android:background="@drawable/home"-->
         <Button
             android:id="@+id/btnHistory"
-            style="@style/filler"
-            android:text="History"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Record a location."
             android:background="@drawable/fabrect"
+            android:alpha="0.9"
+            android:textColor="@color/icons"
             android:textSize="30dp"
+            android:textAllCaps="false"
+            style="@style/Base.TextAppearance.AppCompat"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/padding_button"
             />
-
+        <!--
+        Code update to make the the caps in the button to be disabled
+            android:textAllCaps="false"
+            style="@style/Base.TextAppearance.AppCompat"-->
 
         <Button
+            android:padding="@dimen/padding_button"
             android:id="@+id/btnSearch"
-           android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30dp"
-            android:text="Search"
+            android:text="Need a donor ?"
+            android:textAllCaps="false"
+            style="@style/Base.TextAppearance.AppCompat"
             android:background="@drawable/fabrect"
+            android:alpha="0.9"
+            android:textColor="@color/icons"
             android:layout_marginBottom="30dp"
             android:layout_above="@id/btnHistory"
             android:layout_centerHorizontal="true" />

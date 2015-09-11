@@ -32,24 +32,28 @@
             android:src="@drawable/home"/>
 -->
         <EditText
+            android:layout_margin="@dimen/margin_registration"
             android:id="@+id/name"
             style="@style/filler"
             android:hint="Name"
             android:inputType="textCapSentences" />
 
         <TextView
+            android:layout_margin="10dp"
             android:id="@+id/tvBlood"
             style="@style/fillerOutStand"
             android:hint="Blood"
-            android:padding="10dp" />
+             />
 
         <EditText
+
             android:id="@+id/etNumber"
             style="@style/filler"
             android:hint="Mobile Number"
             android:inputType="number" />
 
         <EditText
+            android:layout_margin="@dimen/margin_registration"
             android:id="@+id/etEmailAddress"
             style="@style/filler"
             android:hint="E-mail Address"
@@ -68,6 +72,7 @@
             android:layout_height="wrap_content"
             android:background="@color/button"
             android:alpha="0.9"
+            android:padding="@dimen/padding_button"
             android:textColor="@color/icons"/>
 
     </LinearLayout>

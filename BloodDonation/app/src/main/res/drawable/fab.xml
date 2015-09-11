@@ -28,7 +28,7 @@
     </item>
     <item>
         <shape android:shape="oval">
-            <solid android:color="?attr/colorAccent"/>
+            <solid android:color="@color/primary_dark"/>
         </shape>
     </item>
 </layer-list>
