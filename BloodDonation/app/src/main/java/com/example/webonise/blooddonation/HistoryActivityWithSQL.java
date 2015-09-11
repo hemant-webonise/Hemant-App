@@ -27,8 +27,8 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_activity_with_sql);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Moments");
-        toolbar.setSubtitle("Where did we make a change ?");
+        toolbar.setTitle(getString(R.string.title_history));
+        toolbar.setSubtitle(getString(R.string.subtitle_history));
         setSupportActionBar(toolbar);
         listUpdate();
         btnToHistoryData=(Button)findViewById(R.id.btnToHistoryData);

@@ -1,12 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+   >
 
     <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.webonise.blooddonation.FillHistoryActivity">
+        tools:context="com.example.webonise.blooddonation.FillHistoryActivity"
+        android:background="@drawable/abc_btn_check_material">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -19,21 +21,32 @@
 
         <EditText
             android:id="@+id/etLocation"
-            style="@style/fillerCenter"
+            style="@style/filler"
+            android:textSize="20dp"
             android:layout_below="@+id/toolbar"
             android:hint="Name of the Hospital"
-            android:inputType="textCapSentences" />
+            android:inputType="textCapSentences"
+            />
+        <TextView
+           style="@style/filler"
+            android:id="@+id/tvDate"
+            android:layout_below="@id/etLocation"
+            android:background="@drawable/fabrect"
+            android:textColor="@color/material_blue_grey_800"
+            android:text="Date"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:minHeight="100dp"/>
 
-        <DatePicker
-            android:id="@+id/dpDate"
-            style="@style/filler"
-            android:layout_below="@id/etLocation"></DatePicker>
+
 
         <ImageButton
             android:id="@+id/btnImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dpDate"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tvDate"
             android:background="@null"
             android:src="@drawable/webo" />
 
@@ -41,7 +54,11 @@
             android:id="@+id/btnAddHistory"
             style="@style/fillerCenter"
             android:layout_below="@id/btnImage"
-            android:text="Save Details" />
+            android:background="@drawable/fabrect"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Save in History"
+            android:textColor="@color/material_blue_grey_800"/>
 
     </RelativeLayout>
 </ScrollView>

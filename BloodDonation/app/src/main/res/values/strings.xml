@@ -64,5 +64,12 @@
     <string name="tel">tel:</string>
     <string name="kilometer">Km</string>
     <string name="future_functionality">Delete</string>
+    <string name="alert_date_select">When did you donate?</string>
+    <string name="date_card_formate">dd-MM-yyyy </string>
+    <string name="title_history">Moments</string>
+    <string name="subtitle_history">Where did we make a change ?</string>
+    <string name="location_tv">Location - </string>
+    <string name="date_tv">Date of Donation - </string>
+
 
 </resources>

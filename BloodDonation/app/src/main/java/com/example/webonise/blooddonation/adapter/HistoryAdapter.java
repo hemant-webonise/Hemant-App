@@ -53,8 +53,8 @@ public class HistoryAdapter extends BaseAdapter{
         TextView tvDate = (TextView) view.findViewById(R.id.tvDate);
         ImageButton  btnImage=(ImageButton) view.findViewById(R.id.btnImage);
         btnImage.setImageBitmap(BitmapFactory.decodeFile(historyList.get(i).getImage()));
-        tvLocation.setText(historyList.get(i).getLocation());
-        tvDate.setText(historyList.get(i).getDate());
+        tvLocation.setText(context.getString(R.string.location_tv)+historyList.get(i).getLocation());
+        tvDate.setText(context.getString(R.string.date_tv)+historyList.get(i).getDate());
         ImageButton imgButton = (ImageButton) view.findViewById(R.id.deletor);
         imgButton.setOnClickListener(new View.OnClickListener() {
             @Override

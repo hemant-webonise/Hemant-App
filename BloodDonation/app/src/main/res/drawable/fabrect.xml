@@ -5,6 +5,7 @@
             <item>
                 <shape android:shape="rectangle">
                     <solid android:color="#16000000"/>
+                    <corners android:radius="5dip" />
                     <padding
                         android:bottom="2px"
                         android:left="2px"
@@ -13,8 +14,8 @@
                         />
                 </shape>
             </item>
-            <item>
-                <shape android:shape="rectangle">
+           <!-- <item>
+                <shape android:shape="ring">
                     <solid android:color="#17000000"/>
                     <padding
                         android:bottom="1px"
@@ -23,13 +24,13 @@
                         android:top="1px"
                         />
                 </shape>
-            </item>
+            </item>-->
         </layer-list>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="5dip" />
-            <gradient android:angle="-90" android:startColor="#ffba0c05" android:endColor="#ff85140a" />
+            <!--<corners android:radius="5dip" />
+            <gradient android:angle="-90" android:startColor="#ffba0c05" android:endColor="#ffff0c05" />-->
         </shape>
     </item>
 </layer-list>
