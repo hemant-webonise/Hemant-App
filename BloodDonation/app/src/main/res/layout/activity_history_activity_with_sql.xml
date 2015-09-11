@@ -14,6 +14,13 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
          />
+    <View
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_below="@id/toolbar"
+        android:alpha="0.2"
+        android:background="@drawable/background">
+    </View>
     <Button
         style="@style/MyMaterialTheme"
         android:layout_width="60dp"

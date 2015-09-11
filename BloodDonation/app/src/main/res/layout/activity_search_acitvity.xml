@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/home"
+
     tools:context="com.example.webonise.blooddonation.SearchActivity">
 
     <android.support.v7.widget.Toolbar
@@ -19,25 +19,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/back">
+        <Button
+            android:id="@+id/btnHistory"
+            style="@style/filler"
+            android:text="History"
+            android:background="@drawable/fabrect"
+            android:alpha="0.9"
+            android:textSize="30dp"
+            android:textColor="@color/icons"
+            android:layout_alignParentBottom="true"
+            />
+
 
         <Button
             android:id="@+id/btnSearch"
            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="50dp"
+            android:textSize="30dp"
             android:text="Search"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="44dp" />
+            android:textColor="@color/icons"
+            android:background="@drawable/fabrect"
+            android:alpha="0.9"
+            android:layout_marginBottom="30dp"
+            android:layout_above="@id/btnHistory"
+            android:layout_centerHorizontal="true" />
 
-        <Button
-            android:id="@+id/btnHistory"
-            style="@style/filler"
-            android:text="History"
-            android:background="@null"
-            android:layout_alignParentTop="true"
-             />
 
     </RelativeLayout>
 

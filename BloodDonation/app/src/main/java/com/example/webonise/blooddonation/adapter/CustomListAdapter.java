@@ -97,24 +97,20 @@ public class CustomListAdapter extends BaseAdapter implements View.OnClickListen
 
 		return convertView;
 	}
-
-
-
-
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.releaseYear :
 
                 new AlertDialog.Builder(activity)
-                        .setTitle("Really call?")
-                        .setMessage("Are you sure you want to Call?")
+                        .setTitle(activity.getString(R.string.really_call))
+                        .setMessage(activity.getString(R.string.sure))
                         .setNegativeButton(android.R.string.no, null)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 String call = year.getText().toString();
                                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                                intent.setData(Uri.parse("tel:"+call));
+                                intent.setData(Uri.parse(activity.getString(R.string.tel)+call));
                                 activity.startActivity(intent);
                             }
                         }).create().show();

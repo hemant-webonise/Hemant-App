@@ -59,5 +59,10 @@
     <string name="title_activity_history_activity_with_sql">HistoryActivityWithSQL</string>
     <string name="error_location">PLease fill the location.</string>
     <string name="successDatabase">Updated Successfully</string>
+    <string name="really_call">Really call?</string>
+    <string name="sure">Are you sure you want to Call?</string>
+    <string name="tel">tel:</string>
+    <string name="kilometer">Km</string>
+    <string name="future_functionality">Delete</string>
 
 </resources>

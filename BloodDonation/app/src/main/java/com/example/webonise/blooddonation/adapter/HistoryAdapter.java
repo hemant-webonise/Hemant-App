@@ -59,7 +59,7 @@ public class HistoryAdapter extends BaseAdapter{
         imgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"Delete",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,context.getString(R.string.future_functionality),Toast.LENGTH_LONG).show();
             }
 
 

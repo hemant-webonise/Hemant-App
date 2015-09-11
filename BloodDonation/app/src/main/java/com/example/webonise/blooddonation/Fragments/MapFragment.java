@@ -97,14 +97,14 @@ public class MapFragment extends Fragment {
 
     private void callerDialog(final Marker marker) {
         new AlertDialog.Builder(getActivity())
-                .setTitle("Really call?\n" + marker.getTitle())
-                .setMessage("Are you sure you want to Call?\n" + marker.getSnippet())
+                .setTitle(getString(R.string.really_call) + marker.getTitle())
+                .setMessage(getString(R.string.sure) + marker.getSnippet())
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         String call = marker.getSnippet();
                         Intent intent = new Intent(Intent.ACTION_DIAL);
-                        intent.setData(Uri.parse("tel:" + call));
+                        intent.setData(Uri.parse(getString(R.string.tel) + call));
                         getActivity().startActivity(intent);
                     }
                 }).create().show();
@@ -165,7 +165,7 @@ public class MapFragment extends Fragment {
                 for (int i = 0; i < dataEntities.size(); i++) {
                     latlng = new LatLng(dataEntities.get(i).getLat(), dataEntities.get(i).getLng());
                     mMap.addMarker(new MarkerOptions().position(latlng).title(dataEntities.get(i).getName()).snippet(dataEntities.get(i).getPhone()));
-                    Log.w("w", "hello");
+
                 }
             }
 
