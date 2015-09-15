@@ -3,10 +3,13 @@ package com.example.webonise.blooddonation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.internal.widget.AdapterViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.webonise.blooddonation.adapter.HistoryAdapter;
 import com.example.webonise.blooddonation.adapter.HistoryDBAdapter;
@@ -18,7 +21,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class HistoryActivityWithSQL extends AppCompatActivity implements View.OnClickListener, HistoryAdapter.CallBack {
+public class HistoryActivityWithSQL extends AppCompatActivity implements View.OnClickListener, HistoryAdapter.CallBack{
     Button btnToHistoryData;
     private ListView listView;
     private HistoryAdapter listAdapter;
@@ -66,6 +69,7 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
         listView = (ListView) findViewById(R.id.lvDetailsList);
         listAdapter = new HistoryAdapter(historyDBAdapter.fetchAllDetails(),this);
         listView.setAdapter(listAdapter);
+
         historyDBAdapter.close();
     }
 
@@ -73,7 +77,6 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
     protected void onResume() {
         super.onResume();
         updateList();
-
     }
 
 
@@ -86,6 +89,6 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
 
     public void onImageChanged(){
         updateList();
-
     }
+
 }

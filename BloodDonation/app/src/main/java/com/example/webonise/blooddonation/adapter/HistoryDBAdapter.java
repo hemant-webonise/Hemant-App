@@ -21,7 +21,7 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "Date";
     public static final String COLUMN_IMAGE = "Image";
     public static final int ID = 0;
-
+    ContentValues initialValues;
     public HistoryDBAdapter(Context context) {
         super(context, DATABASE_NAME, null, DB_VERSION, null);
     }
@@ -47,12 +47,10 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
         initialValues.put(COLUMN_LOCATION, history.getLocation());
         initialValues.put(COLUMN_DATE, history.getDate());
         initialValues.put(COLUMN_IMAGE, history.getImage());
-
-
         if(db!=null && db.isOpen()) {
-            db.insert(TABLE_DETAILS, null, initialValues);
-        }
+        db.insert(TABLE_DETAILS, null, initialValues);
         db.close();
+        }
     }
 
     public void deleteCertainDetail(int id) {
@@ -60,6 +58,13 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
         db.delete(TABLE_DETAILS, COLUMN_ID + "=" + id, null);
         db.close();
     }
+
+    public void updateCertainDetail(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update(TABLE_DETAILS, initialValues, COLUMN_ID + "=" + id, null);
+        db.close();
+    }
+
 
 
     public List<History> fetchAllDetails() {
@@ -82,11 +87,11 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
                 personDetailsList.add(history);
             }
             while (cursor.moveToNext());
-        } else {
+        } /*else {
             History history = new History();
             history.setLocation(Constant.EMPTY);
             personDetailsList.add(history);
-        }
+        }*/
         return personDetailsList;
     }
 }

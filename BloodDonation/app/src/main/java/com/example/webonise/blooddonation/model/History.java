@@ -10,16 +10,6 @@ public class History {
     private String Date;
     private String Image;
 
-    public History(int id, String location, String date, String image) {
-
-        this.id = ID;
-        Location = location;
-        Date = date;
-        Image = image;
-    }
-
-    public History() {
-    }
 
     public  int getId() {
         return id;

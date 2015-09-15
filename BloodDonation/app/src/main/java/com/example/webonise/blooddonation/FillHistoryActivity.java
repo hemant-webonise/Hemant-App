@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -49,18 +50,40 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
     private int pDay;
     /** This integer will uniquely define the dialog to be used for displaying date picker.*/
     static final int DATE_DIALOG_ID = 0;
+    private boolean isUpdate=true;
+    int id;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_history);
+        Bundle bundle = getIntent().getExtras();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        isUpdate=bundle.getBoolean("update");
+        Log.w("IS", String.valueOf(isUpdate));
+        if(!isUpdate)
+        {
+            id= Integer.parseInt(getIntent().getExtras().getString("ID"));
+            HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
+            History history = new History();
+            history.setLocation("UpdatedforId"+id);
+            history.setDate(tvDate.getText().toString());
+            history.setImage(imagePath);
+            personDatabaseHelper.updateCertainDetail(id);
+            personDatabaseHelper.close();
+
+        }
+        else {
         toolbar.setTitle("History");
         toolbar.setSubtitle("Lets add some good deeds..");
         setSupportActionBar(toolbar);
         initialize();
         setListeners();
     }
+    }
+
 
 
 
@@ -117,25 +140,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         btnImage=(ImageButton) findViewById(R.id.btnImage);
         etLocation=(EditText)findViewById(R.id.etLocation);
     }
-    String imagePath;/*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == LOAD_IMAGE_RESULTS && resultCode == RESULT_OK && data != null) {
-            // Let's read picked image data - its URI
-            Uri pickedImage = data.getData();
-            // Let's read picked image path using content resolver
-            String[] filePath = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(pickedImage, filePath, null, null, null);
-            cursor.moveToFirst();
-            imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
-            // Now we need to set the GUI ImageView data with data read from the picked file.
-            btnImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
-            // At the end remember to close the cursor or you will end with the RuntimeException!
-            cursor.close();
-        }
-    }*/
-
+    String imagePath;
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

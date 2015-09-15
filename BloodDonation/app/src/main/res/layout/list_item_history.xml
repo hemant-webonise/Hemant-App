@@ -11,38 +11,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
-        android:layout_marginLeft="@dimen/margin_registration"
-        android:layout_alignParentTop="true"
 
-        />
+        android:layout_below="@+id/deletor"
+        android:layout_toRightOf="@+id/btnImage"
+        android:layout_toEndOf="@+id/btnImage" />
 
     <ImageButton
         android:id="@+id/deletor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:layout_alignParentRight="true"
         android:src="@drawable/delete"
-        android:background="@null"/>
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:textSize="@dimen/text"
         android:id="@+id/tvDate"
-        android:layout_marginLeft="@dimen/margin_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvLocation"
         android:text="Date"
-        />
+        android:layout_below="@+id/tvLocation"
+        android:layout_toRightOf="@+id/btnImage"
+        android:layout_toEndOf="@+id/btnImage" />
     <ImageButton
         android:id="@+id/btnImage"
-        style="@style/fillerCenter"
-
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@null"
-        android:src="@drawable/webo"
-        />
+        android:src="@drawable/pick"
+        android:layout_margin="@dimen/margin_registration"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 
