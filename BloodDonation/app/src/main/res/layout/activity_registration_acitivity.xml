@@ -46,7 +46,7 @@
              />
 
         <EditText
-
+            android:layout_margin="@dimen/margin_registration"
             android:id="@+id/etNumber"
             style="@style/filler"
             android:hint="Mobile Number"

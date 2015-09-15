@@ -79,8 +79,6 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
                 history.setLocation(cursor.getString(cursor.getColumnIndex(COLUMN_LOCATION)));
                 history.setDate(cursor.getString(cursor.getColumnIndex(COLUMN_DATE)));
                 history.setImage(cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE)));
-
-
                 personDetailsList.add(history);
             }
             while (cursor.moveToNext());

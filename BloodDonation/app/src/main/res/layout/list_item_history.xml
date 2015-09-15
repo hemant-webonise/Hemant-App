@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
+        android:layout_marginLeft="@dimen/margin_registration"
         android:layout_alignParentTop="true"
 
         />
@@ -27,6 +28,7 @@
     <TextView
         android:textSize="@dimen/text"
         android:id="@+id/tvDate"
+        android:layout_marginLeft="@dimen/margin_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvLocation"
@@ -35,6 +37,7 @@
     <ImageButton
         android:id="@+id/btnImage"
         style="@style/fillerCenter"
+
         android:layout_centerHorizontal="true"
         android:layout_below="@id/tvDate"
         android:background="@null"

@@ -18,10 +18,11 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class HistoryActivityWithSQL extends AppCompatActivity implements View.OnClickListener {
+public class HistoryActivityWithSQL extends AppCompatActivity implements View.OnClickListener, HistoryAdapter.CallBack {
     Button btnToHistoryData;
     private ListView listView;
     private HistoryAdapter listAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
         toolbar.setTitle(getString(R.string.title_history));
         toolbar.setSubtitle(getString(R.string.subtitle_history));
         setSupportActionBar(toolbar);
-        listUpdate();
+        updateList();
         btnToHistoryData=(Button)findViewById(R.id.btnToHistoryData);
         btnToHistoryData.setOnClickListener(this);
 
@@ -60,17 +61,31 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
         }
 
     }
+    private void updateList() {
+        HistoryDBAdapter historyDBAdapter = new HistoryDBAdapter(this);
+        listView = (ListView) findViewById(R.id.lvDetailsList);
+        listAdapter = new HistoryAdapter(historyDBAdapter.fetchAllDetails(),this);
+        listView.setAdapter(listAdapter);
+        historyDBAdapter.close();
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        listUpdate();
+        updateList();
+
     }
 
-    private void listUpdate() {
-        listView = (ListView) findViewById(R.id.lvDetailsList);
-        HistoryDBAdapter historyDBAdapter = new HistoryDBAdapter(this);
-        listAdapter = new HistoryAdapter(historyDBAdapter.fetchAllDetails(),this);
-        listView.setAdapter(listAdapter);
+
+    @Override
+    public void onDeleted() {
+        updateList();
+    }
+
+
+
+    public void onImageChanged(){
+        updateList();
+
     }
 }

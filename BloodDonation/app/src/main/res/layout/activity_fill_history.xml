@@ -58,6 +58,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Save in History"
+            android:padding="@dimen/padding_button"
             android:textColor="@color/icons"
             android:layout_below="@+id/btnImage"
             android:layout_centerHorizontal="true" />

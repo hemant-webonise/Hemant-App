@@ -4,14 +4,25 @@ package com.example.webonise.blooddonation.model;
  * Created by webonise on 10/9/15.
  */
 public class History {
-    public static final int ID = 0;
+    public static  int ID = 0;
     private int id;
     private String Location;
     private String Date;
     private String Image;
 
-    public static int getId() {
-        return ID;
+    public History(int id, String location, String date, String image) {
+
+        this.id = ID;
+        Location = location;
+        Date = date;
+        Image = image;
+    }
+
+    public History() {
+    }
+
+    public  int getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -42,14 +53,5 @@ public class History {
         Image = image;
     }
 
-    public History(int id, String location, String date, String image) {
 
-        this.id = id;
-        Location = location;
-        Date = date;
-        Image = image;
-    }
-
-    public History() {
-    }
 }
