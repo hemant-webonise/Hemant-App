@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.webonise.blooddonation.adapter.HistoryDBAdapter;
+import com.example.webonise.blooddonation.app.Constant;
 import com.example.webonise.blooddonation.model.History;
 
 import java.io.ByteArrayOutputStream;
@@ -38,53 +39,53 @@ import java.util.Locale;
 
 
 public class FillHistoryActivity extends AppCompatActivity implements View.OnClickListener {
-    DatePicker datePicker;
+
     Button btnAddHistory;
+    HistoryDBAdapter personDatabaseHelper;
     EditText etLocation;
     TextView tvDate;
     private static int LOAD_IMAGE_RESULTS = 1;
     int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     ImageButton btnImage;
-    private int pYear;
-    private int pMonth;
-    private int pDay;
-    /** This integer will uniquely define the dialog to be used for displaying date picker.*/
-    static final int DATE_DIALOG_ID = 0;
-    private boolean isUpdate=true;
+    private boolean isUpdate = true;
     int id;
-
+    Bundle bundle;
+    Toolbar toolbar;
+    Cursor cursor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_history);
-        Bundle bundle = getIntent().getExtras();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        isUpdate=bundle.getBoolean("update");
-        Log.w("IS", String.valueOf(isUpdate));
-        if(!isUpdate)
-        {
-            id= Integer.parseInt(getIntent().getExtras().getString("ID"));
-            HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
-            History history = new History();
-            history.setLocation("UpdatedforId"+id);
-            history.setDate(tvDate.getText().toString());
-            history.setImage(imagePath);
-            personDatabaseHelper.updateCertainDetail(id);
-            personDatabaseHelper.close();
+        bundle = getIntent().getExtras();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (bundle != null) {
+            isUpdate = bundle.getBoolean("update");
+            Log.w("IS", String.valueOf(isUpdate));
+            if (!isUpdate) {
+                toolbar.setTitle(getString(R.string.updateTitle));
+                toolbar.setSubtitle(getString(R.string.subtitle));
+                setSupportActionBar(toolbar);
+                initialize();
+                setListeners();
+                id = bundle.getInt("ID");
+                personDatabaseHelper = new HistoryDBAdapter(this);
+                cursor=personDatabaseHelper.getCertainDetail(id);
+                etLocation.setText(""+cursor.getString(cursor.getColumnIndex(Constant.COLUMN_LOCATION)));
+                tvDate.setText(""+cursor.getString(cursor.getColumnIndex(Constant.COLUMN_DATE)));
 
+                imagePath=""+cursor.getString(cursor.getColumnIndex(Constant.COLUMN_IMAGE));
+                btnImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+            }
+        } else {
+            toolbar.setTitle(getString(R.string.add));
+            toolbar.setSubtitle(getString(R.string.subtitle));
+            setSupportActionBar(toolbar);
+            initialize();
+            setListeners();
         }
-        else {
-        toolbar.setTitle("History");
-        toolbar.setSubtitle("Lets add some good deeds..");
-        setSupportActionBar(toolbar);
-        initialize();
-        setListeners();
     }
-    }
-
-
 
 
     private void setListeners() {
@@ -95,52 +96,55 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
 
     private void setDailog() {
         tvDate.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
-                // To show current date in the datepicker
-                final Calendar mcurrentDate = Calendar.getInstance();
-                int mYear = mcurrentDate.get(Calendar.YEAR);
-                int mMonth = mcurrentDate.get(Calendar.MONTH);
-                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog mDatePicker = new DatePickerDialog(
-                        FillHistoryActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    public void onDateSet(DatePicker datepicker,
-                                          int selectedyear, int selectedmonth,
-                                          int selectedday) {
-
-                        mcurrentDate.set(Calendar.YEAR, selectedyear);
-                        mcurrentDate.set(Calendar.MONTH, selectedmonth);
-                        mcurrentDate.set(Calendar.DAY_OF_MONTH,
-                                selectedday);
-                        SimpleDateFormat sdf = new SimpleDateFormat(
-                                getResources().getString(
-                                        R.string.date_card_formate),
-                                Locale.US);
-
-                        tvDate.setText(sdf.format(mcurrentDate.getTime()));
-                    }
-                }, mYear, mMonth, mDay);
-
-                mDatePicker.setTitle(getResources().getString(R.string.alert_date_select));
-                mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
-                mDatePicker.show();
+                datePickerDialog();
             }
         });
+    }
+
+    private void datePickerDialog() {
+        // To show current date in the datepicker
+        final Calendar mcurrentDate = Calendar.getInstance();
+        int mYear = mcurrentDate.get(Calendar.YEAR);
+        int mMonth = mcurrentDate.get(Calendar.MONTH);
+        int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog mDatePicker = new DatePickerDialog(
+                this, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+
+                mcurrentDate.set(Calendar.YEAR, selectedyear);
+                mcurrentDate.set(Calendar.MONTH, selectedmonth);
+                mcurrentDate.set(Calendar.DAY_OF_MONTH,
+                        selectedday);
+                SimpleDateFormat sdf = new SimpleDateFormat(
+                        getResources().getString(
+                                R.string.date_card_formate),
+                        Locale.US);
+
+                tvDate.setText(sdf.format(mcurrentDate.getTime()));
+            }
+        }, mYear, mMonth, mDay);
+
+        mDatePicker.setTitle(getResources().getString(R.string.alert_date_select));
+        mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
+        mDatePicker.show();
     }
 
     private void initialize() {
        /* datePicker=(DatePicker) findViewById(R.id.dpDate);*/
 
       /*  datePicker.setMaxDate(Calendar.DATE);
-*/      tvDate=(TextView) findViewById(R.id.tvDate);
-        btnAddHistory=(Button) findViewById(R.id.btnAddHistory);
-        btnImage=(ImageButton) findViewById(R.id.btnImage);
-        etLocation=(EditText)findViewById(R.id.etLocation);
+*/
+        tvDate = (TextView) findViewById(R.id.tvDate);
+        btnAddHistory = (Button) findViewById(R.id.btnAddHistory);
+        btnImage = (ImageButton) findViewById(R.id.btnImage);
+        etLocation = (EditText) findViewById(R.id.etLocation);
     }
+
     String imagePath;
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -172,21 +176,20 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         } catch (IOException e) {
             e.printStackTrace();
         }
-        imagePath= String.valueOf(thumbnail);
+        imagePath = String.valueOf(thumbnail);
         btnImage.setImageBitmap(thumbnail);
     }
 
     @SuppressWarnings("deprecation")
     private void onSelectFromGalleryResult(Intent data) {
         Uri selectedImageUri = data.getData();
-        String[] projection = { MediaStore.MediaColumns.DATA };
+        String[] projection = {MediaStore.MediaColumns.DATA};
         Cursor cursor = managedQuery(selectedImageUri, projection, null, null,
                 null);
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
         cursor.moveToFirst();
-
         String selectedImagePath = cursor.getString(column_index);
-        imagePath=selectedImagePath;
+        imagePath = selectedImagePath;
         Bitmap bm;
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -203,7 +206,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void selectImage() {
-        final CharSequence[] items = { "Take Photo", "Choose from Library", "Cancel" };
+        final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(FillHistoryActivity.this);
         builder.setTitle("Add Photo!");
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -231,30 +234,48 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
 
-            case R.id.btnImage :
+            case R.id.btnImage:
                /* Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, LOAD_IMAGE_RESULTS);*/
                 selectImage();
-
                 break;
-            case R.id.btnAddHistory :
-                Toast.makeText(this,/*String.valueOf(datePicker.getDayOfMonth())+*/imagePath,Toast.LENGTH_LONG).show();
+
+            case R.id.btnAddHistory:
                 if (TextUtils.isEmpty(etLocation.getText().toString())) {
                     etLocation.setError(getString(R.string.error_location));
-                } else {
+                } else if (tvDate.getText().toString().equals(getString(R.string.select_date))) {
+                    datePickerDialog();
+                } else if (toolbar.getTitle() == getString(R.string.updateTitle)) {
+                    id = bundle.getInt("ID");
+                    if (imagePath != null) {
+                        personDatabaseHelper = new HistoryDBAdapter(this);
+                        /*Cause error*/
+
+                        personDatabaseHelper.updateCertainDetail(id, etLocation.getText().toString(), tvDate.getText().toString(), imagePath);
+                        personDatabaseHelper.close();
+                        btnAddHistory.setText("Updated");
+                    } else {
+                        imagePath = String.valueOf(R.drawable.pick);
+                        HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
+                        personDatabaseHelper.updateCertainDetail(id, etLocation.getText().toString(), tvDate.getText().toString(), imagePath);
+                        personDatabaseHelper.close();
+                        btnAddHistory.setText("Updated");
+                    }
+                }
+                else {
                     HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
                     History history = new History();
                     history.setLocation(etLocation.getText().toString());
-//                    String date = String.valueOf(new StringBuilder().append(datePicker.getYear()).append(" ").append("-").append(datePicker.getMonth()).append("-").append(datePicker.getDayOfMonth()));
                     history.setDate(tvDate.getText().toString());
                     history.setImage(imagePath);
                     personDatabaseHelper.createDetails(history);
                     personDatabaseHelper.close();
                     Toast.makeText(getApplicationContext(), getString(R.string.successDatabase), Toast.LENGTH_LONG).show();
-                    break;
+                    btnAddHistory.setText("Added");
                 }
+
                 break;
 
         }

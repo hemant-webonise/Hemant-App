@@ -4,6 +4,9 @@ package com.example.webonise.blooddonation.app;
  * Created by webonise on 7/9/15.
  */
 public class Constant {
+    public static final String COLUMN_LOCATION = "Location";
+    public static final String COLUMN_DATE = "Date";
+    public static final String COLUMN_IMAGE = "Image";
     public static String PREFER = "prefer";
     public static String TAG_Lat= "Lat";
     public static String TAG_Lng= "Lng";

@@ -3,6 +3,7 @@ package com.example.webonise.blooddonation.adapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -17,9 +18,6 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "BloodDonation";
     public static final String TABLE_DETAILS = "History";
     public static final String COLUMN_ID = "Id";
-    public static final String COLUMN_LOCATION = "Location";
-    public static final String COLUMN_DATE = "Date";
-    public static final String COLUMN_IMAGE = "Image";
     public static final int ID = 0;
     ContentValues initialValues;
     public HistoryDBAdapter(Context context) {
@@ -29,7 +27,7 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_DETAILS + " ( " + COLUMN_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT, "
-                + COLUMN_LOCATION + " TEXT, " + COLUMN_DATE + " TEXT ," + COLUMN_IMAGE + " TEXT ) ";
+                + Constant.COLUMN_LOCATION + " TEXT, " + Constant.COLUMN_DATE + " TEXT ," + Constant.COLUMN_IMAGE + " TEXT ) ";
          sqLiteDatabase.execSQL(CREATE_TABLE);
 
     }
@@ -43,10 +41,10 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
     public void createDetails(History history) {
         SQLiteDatabase db = this.getWritableDatabase();
         /*ContentValues Approach*/
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(COLUMN_LOCATION, history.getLocation());
-        initialValues.put(COLUMN_DATE, history.getDate());
-        initialValues.put(COLUMN_IMAGE, history.getImage());
+        initialValues = new ContentValues();
+        initialValues.put(Constant.COLUMN_LOCATION, history.getLocation());
+        initialValues.put(Constant.COLUMN_DATE, history.getDate());
+        initialValues.put(Constant.COLUMN_IMAGE, history.getImage());
         if(db!=null && db.isOpen()) {
         db.insert(TABLE_DETAILS, null, initialValues);
         db.close();
@@ -59,13 +57,24 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateCertainDetail(int id) {
+    public void updateCertainDetail(int id, String location, String date, String imagePath) {
         SQLiteDatabase db = this.getWritableDatabase();
+        initialValues = new ContentValues();
+        initialValues.put(Constant.COLUMN_LOCATION,location);
+        initialValues.put(Constant.COLUMN_DATE, date);
+        initialValues.put(Constant.COLUMN_IMAGE,imagePath);
         db.update(TABLE_DETAILS, initialValues, COLUMN_ID + "=" + id, null);
         db.close();
     }
-
-
+    public Cursor getCertainDetail(long rowId) throws SQLException {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor mCursor = db.query(true, TABLE_DETAILS, new String[] {COLUMN_ID, Constant.COLUMN_LOCATION, Constant.COLUMN_DATE,Constant.COLUMN_IMAGE }, COLUMN_ID + "=" + rowId,
+                null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
 
     public List<History> fetchAllDetails() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -81,17 +90,13 @@ public class HistoryDBAdapter extends SQLiteOpenHelper {
             do {
                 History history = new History();
                 history.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
-                history.setLocation(cursor.getString(cursor.getColumnIndex(COLUMN_LOCATION)));
-                history.setDate(cursor.getString(cursor.getColumnIndex(COLUMN_DATE)));
-                history.setImage(cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE)));
+                history.setLocation(cursor.getString(cursor.getColumnIndex(Constant.COLUMN_LOCATION)));
+                history.setDate(cursor.getString(cursor.getColumnIndex(Constant.COLUMN_DATE)));
+                history.setImage(cursor.getString(cursor.getColumnIndex(Constant.COLUMN_IMAGE)));
                 personDetailsList.add(history);
             }
             while (cursor.moveToNext());
-        } /*else {
-            History history = new History();
-            history.setLocation(Constant.EMPTY);
-            personDetailsList.add(history);
-        }*/
+        }
         return personDetailsList;
     }
 }

@@ -8,16 +8,6 @@
     <string name="title_activity_search_acitvity">SearchAcitvity</string>
     <string name="BloodGroup">Blood Group</string>
 
-    <string-array name="Blood_list">
-        <item>O Positive</item>
-        <item>O Negative</item>
-        <item>A Positive</item>
-        <item>A Negative</item>
-        <item>B Positive</item>
-        <item>B Negative</item>
-        <item>AB Positive</item>
-        <item>AB Negative</item>
-    </string-array>
 
     <string name="title_activity_list_map">ListMapActivity</string>
     <string name="title_section1">List</string>
@@ -68,7 +58,10 @@
     <string name="date_card_formate">dd-MM-yyyy </string>
     <string name="title_history">Moments</string>
     <string name="subtitle_history">Where did we make a change ?</string>
-
+    <string name="updateTitle">Update History</string>
+    <string name="subtitle">Lets do some good deeds..</string>
+    <string name="add">History</string>
+    <string name="select_date">Select Date</string>
 
 
 </resources>

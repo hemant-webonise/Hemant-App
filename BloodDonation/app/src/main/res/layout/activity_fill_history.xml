@@ -26,6 +26,8 @@
             android:layout_below="@+id/toolbar"
             android:hint="Name of the Hospital"
             android:inputType="textCapSentences"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:layout_margin="@dimen/margin_registration"
             />
         <TextView
@@ -33,7 +35,7 @@
             android:id="@+id/tvDate"
             android:layout_below="@id/etLocation"
             android:layout_margin="@dimen/margin_registration"
-            android:text=" Select Date"
+            android:text="@string/select_date"
             android:textColor="@color/primary_dark"
             android:textSize="20dp"
             android:gravity="center_vertical"
