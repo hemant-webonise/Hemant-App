@@ -42,7 +42,7 @@
     <string name="check_phone">Please fill the Number.</string>
     <string name="check_blood_group">Please select your BloodGroup !</string>
     <string name="check_name">Please fill the Name.</string>
-    <string name="location_unfetched">Location was not fetched properly</string>
+
     <string name="title_activity_fill_history">FillHistoryActivity</string>
     <string name="action_search">Search</string>
     <string name="action_share">Share</string>

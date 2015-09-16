@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,7 +89,8 @@ public class CustomListAdapterDonor extends BaseAdapter implements View.OnClickL
             tvDistance.setText(temp);
             }
             else {
-                Toast.makeText(activity,activity.getString(R.string.location_unfetched),Toast.LENGTH_LONG).show();
+               /* Toast.makeText(activity,activity.getString(R.string.location_unfetched),Toast.LENGTH_LONG).show();*/
+                Log.w("Error Fetch","Location Un fetched ");
             }
         }else{
             gpsTracker.showSettingsAlert();
