@@ -71,12 +71,16 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                 setListeners();
                 id = bundle.getInt("ID");
                 personDatabaseHelper = new HistoryDBAdapter(this);
-                cursor=personDatabaseHelper.getCertainDetail(id);
-                etLocation.setText(""+cursor.getString(cursor.getColumnIndex(Constant.COLUMN_LOCATION)));
-                tvDate.setText(""+cursor.getString(cursor.getColumnIndex(Constant.COLUMN_DATE)));
+                cursor = personDatabaseHelper.getCertainDetail(id);
+                etLocation.setText("" + cursor.getString(cursor.getColumnIndex(Constant.COLUMN_LOCATION)));
+                tvDate.setText("" + cursor.getString(cursor.getColumnIndex(Constant.COLUMN_DATE)));
 
-                imagePath=""+cursor.getString(cursor.getColumnIndex(Constant.COLUMN_IMAGE));
-                btnImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+                imagePath = "" + cursor.getString(cursor.getColumnIndex(Constant.COLUMN_IMAGE));
+                if (imagePath.equals("" + null)) {
+                    btnImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pick));
+                } else {
+                    btnImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+                }
             }
         } else {
             toolbar.setTitle(getString(R.string.add));
@@ -162,8 +166,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
 
-        File destination = new File(Environment.getExternalStorageDirectory(),
-                System.currentTimeMillis() + ".jpg");
+        File destination = new File(Environment.getExternalStorageDirectory(),System.currentTimeMillis() + ".jpg");
 
         FileOutputStream fo;
         try {
@@ -176,7 +179,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         } catch (IOException e) {
             e.printStackTrace();
         }
-        imagePath = String.valueOf(thumbnail);
+        imagePath = String.valueOf(destination);
         btnImage.setImageBitmap(thumbnail);
     }
 
@@ -263,8 +266,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                         personDatabaseHelper.close();
                         btnAddHistory.setText("Updated");
                     }
-                }
-                else {
+                } else {
                     HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
                     History history = new History();
                     history.setLocation(etLocation.getText().toString());
