@@ -30,7 +30,7 @@
     <string name="update_profile">Update Profile</string>
     <string name="registration_activity">com.example.webonise.blooddonation.REGISTRATIONACTIVITY</string>
     <string name="update">Update</string>
-    <string name="select_color">Pick a color</string>
+    <string name="select_blood">Pick your Blood Type</string>
     <string name="comma" formatted="false"> %s,%s </string>
     <string name="recheck_dialog_title">Really Exit?</string>
     <string name="check_dialog">Are you sure you want to exit?</string>
@@ -62,6 +62,12 @@
     <string name="subtitle">Lets do some good deeds..</string>
     <string name="add">History</string>
     <string name="select_date">Select Date</string>
+    <string name="allert_name">Fill Hospital name first</string>
+    <string name="title_add_photo">Add Photo!</string>
+    <string name="choose_photo">Take Photo</string>
+    <string name="choose_laibrary">Choose from Library</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_file">Select File</string>
 
 
 </resources>

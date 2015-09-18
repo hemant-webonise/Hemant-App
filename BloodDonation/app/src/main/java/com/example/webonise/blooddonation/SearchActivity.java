@@ -31,8 +31,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         //Title and subtitle
         toolbar.setTitle("Blood Donation ");
         toolbar.setSubtitle("What's your blood type ?");
-
-
         setSupportActionBar(toolbar);
         btnSearch=(Button)findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(this);
@@ -80,7 +78,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 final CharSequence BloodGroup[] = new CharSequence[] {"O-", "O+","A-","A+","B-","B+","AB-","AB+"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(getString(R.string.select_color))
+                builder.setTitle(getString(R.string.select_blood))
                        .setItems(BloodGroup, new DialogInterface.OnClickListener() {
                            @Override
                            public void onClick(DialogInterface dialog, int which) {

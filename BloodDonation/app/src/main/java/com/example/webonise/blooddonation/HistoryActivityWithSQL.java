@@ -2,6 +2,8 @@ package com.example.webonise.blooddonation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.widget.AdapterViewCompat;
 import android.support.v7.widget.Toolbar;
@@ -22,7 +24,8 @@ import java.util.List;
 
 
 public class HistoryActivityWithSQL extends AppCompatActivity implements View.OnClickListener, HistoryAdapter.CallBack{
-    Button btnToHistoryData;
+
+    FloatingActionButton btnToHistoryData;
     private ListView listView;
     private HistoryAdapter listAdapter;
 
@@ -35,7 +38,7 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
         toolbar.setSubtitle(getString(R.string.subtitle_history));
         setSupportActionBar(toolbar);
         updateList();
-        btnToHistoryData=(Button)findViewById(R.id.btnToHistoryData);
+        btnToHistoryData=(FloatingActionButton) findViewById(R.id.btnToHistoryData);
         btnToHistoryData.setOnClickListener(this);
 
     }
@@ -59,6 +62,8 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnToHistoryData:
+                /*This is snackbar it a new feature in material design*/
+               /* Snackbar.make(view, "Demo", Snackbar.LENGTH_LONG).show();*/
                 Intent fillHistory = new Intent(this,FillHistoryActivity.class);
                 startActivity(fillHistory);
         }
@@ -69,6 +74,7 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
         listView = (ListView) findViewById(R.id.lvDetailsList);
         listAdapter = new HistoryAdapter(historyDBAdapter.fetchAllDetails(),this);
         listView.setAdapter(listAdapter);
+
 
         historyDBAdapter.close();
     }

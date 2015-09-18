@@ -11,8 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
-        android:singleLine="true"
-        android:layout_below="@+id/deletor"
+        android:textColor="@drawable/list_item_text_selector"
+
+        android:ellipsize="end"
+        android:layout_alignTop="@+id/btnImage"
         android:layout_toRightOf="@+id/btnImage"
         android:layout_toLeftOf="@+id/deletor"
         android:layout_toStartOf="@+id/deletor" />
@@ -24,15 +26,19 @@
         android:focusable="false"
         android:src="@drawable/delete"
         android:background="@null"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_alignTop="@+id/tvLocation"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <TextView
-
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
+        android:textSize="@dimen/abc_text_size_small_material"
+        android:textColor="@color/primary"
         android:layout_below="@+id/tvLocation"
         android:layout_toRightOf="@+id/btnImage"
         android:layout_toEndOf="@+id/btnImage" />

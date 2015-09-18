@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.webonise.blooddonation.FillHistoryActivity"
-        android:textColor="@color/material_blue_grey_800">
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -30,16 +30,18 @@
             android:ellipsize="end"
             android:layout_margin="@dimen/margin_registration"
             />
+
         <TextView
            style="@style/filler"
             android:id="@+id/tvDate"
-            android:layout_below="@id/etLocation"
-            android:layout_margin="@dimen/margin_registration"
             android:text="@string/select_date"
             android:textColor="@color/primary_dark"
             android:textSize="20dp"
             android:gravity="center_vertical"
-            android:minHeight="100dp"/>
+            android:layout_marginLeft="@dimen/margin_registration"
+            android:layout_below="@+id/etLocation"
+            android:layout_alignRight="@+id/btnImage"
+            android:layout_alignEnd="@+id/btnImage" />
 
         <ImageButton
             android:layout_margin="@dimen/margin_registration"
@@ -58,12 +60,20 @@
             android:gravity="center"
             android:background="@drawable/fabrect"
             android:textSize="20dp"
-            android:textStyle="bold"
             android:text="Save in History"
+            android:textAllCaps="false"
             android:padding="@dimen/padding_button"
             android:textColor="@color/icons"
             android:layout_below="@+id/btnImage"
             android:layout_centerHorizontal="true" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/calendars"
+            android:id="@+id/button"
+            android:layout_below="@+id/etLocation"
+            android:layout_toRightOf="@+id/tvDate"
+            android:layout_toEndOf="@+id/tvDate" />
     </RelativeLayout>
 </ScrollView>

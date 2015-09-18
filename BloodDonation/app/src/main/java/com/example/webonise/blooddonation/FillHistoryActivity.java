@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -128,12 +129,20 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                         Locale.US);
 
                 tvDate.setText(sdf.format(mcurrentDate.getTime()));
+                btnAddHistory.setAlpha((float) 0.8);
+                btnAddHistory.setBackgroundColor(Color.GREEN);
+
             }
         }, mYear, mMonth, mDay);
 
         mDatePicker.setTitle(getResources().getString(R.string.alert_date_select));
         mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
-        mDatePicker.show();
+        if(!isEmpty(etLocation)){
+            mDatePicker.show();
+           }else{
+            Toast.makeText(this,getString(R.string.allert_name),Toast.LENGTH_LONG).show();
+        }
+
     }
 
     private void initialize() {
@@ -166,7 +175,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
 
-        File destination = new File(Environment.getExternalStorageDirectory(),System.currentTimeMillis() + ".jpg");
+        File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
 
         FileOutputStream fo;
         try {
@@ -209,31 +218,35 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+        final CharSequence[] items = {getString(R.string.choose_photo), getString(R.string.choose_laibrary), getString(R.string.cancel)};
         AlertDialog.Builder builder = new AlertDialog.Builder(FillHistoryActivity.this);
-        builder.setTitle("Add Photo!");
+        builder.setTitle(getString(R.string.title_add_photo));
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (items[item].equals("Take Photo")) {
+                if (items[item].equals(getString(R.string.choose_photo))) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, REQUEST_CAMERA);
-                } else if (items[item].equals("Choose from Library")) {
+                } else if (items[item].equals(getString(R.string.choose_laibrary))) {
                     Intent intent = new Intent(
                             Intent.ACTION_PICK,
                             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
                     startActivityForResult(
-                            Intent.createChooser(intent, "Select File"),
+                            Intent.createChooser(intent, getString(R.string.select_file)),
                             SELECT_FILE);
-                } else if (items[item].equals("Cancel")) {
+                } else if (items[item].equals(getString(R.string.cancel))) {
                     dialog.dismiss();
                 }
             }
         });
+
         builder.show();
     }
 
+    private boolean isEmpty(EditText input) {
+        return input.getText().toString().trim().length() == 0;
+    }
 
     @Override
     public void onClick(View view) {
@@ -246,25 +259,27 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                 break;
 
             case R.id.btnAddHistory:
-                if (TextUtils.isEmpty(etLocation.getText().toString())) {
+                if (isEmpty(etLocation)) {
                     etLocation.setError(getString(R.string.error_location));
                 } else if (tvDate.getText().toString().equals(getString(R.string.select_date))) {
                     datePickerDialog();
+
                 } else if (toolbar.getTitle() == getString(R.string.updateTitle)) {
                     id = bundle.getInt("ID");
                     if (imagePath != null) {
                         personDatabaseHelper = new HistoryDBAdapter(this);
                         /*Cause error*/
-
                         personDatabaseHelper.updateCertainDetail(id, etLocation.getText().toString(), tvDate.getText().toString(), imagePath);
                         personDatabaseHelper.close();
-                        btnAddHistory.setText("Updated");
+                        Intent returnBank = new Intent(this, HistoryActivityWithSQL.class);
+                        startActivity(returnBank);
                     } else {
                         imagePath = String.valueOf(R.drawable.pick);
                         HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
                         personDatabaseHelper.updateCertainDetail(id, etLocation.getText().toString(), tvDate.getText().toString(), imagePath);
                         personDatabaseHelper.close();
-                        btnAddHistory.setText("Updated");
+                        Intent returnBank = new Intent(this, HistoryActivityWithSQL.class);
+                        startActivity(returnBank);
                     }
                 } else {
                     HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
@@ -276,6 +291,8 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                     personDatabaseHelper.close();
                     Toast.makeText(getApplicationContext(), getString(R.string.successDatabase), Toast.LENGTH_LONG).show();
                     btnAddHistory.setText("Added");
+                    Intent returnBank = new Intent(this, HistoryActivityWithSQL.class);
+                    startActivity(returnBank);
                 }
 
                 break;

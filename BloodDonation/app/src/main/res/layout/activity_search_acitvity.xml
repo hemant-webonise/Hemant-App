@@ -34,10 +34,11 @@
             android:textSize="30dp"
             android:textAllCaps="false"
             style="@style/Base.TextAppearance.AppCompat"
+            android:padding="@dimen/padding_button"
+            android:gravity="center"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:padding="@dimen/padding_button"
-            />
+            android:layout_marginBottom="46dp" />
         <!--
         Code update to make the the caps in the button to be disabled
             android:textAllCaps="false"
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:text="Need a donor ?"
+            android:gravity="center"
             android:textAllCaps="false"
             style="@style/Base.TextAppearance.AppCompat"
             android:background="@drawable/fabrect"
@@ -57,7 +59,10 @@
             android:textColor="@color/icons"
             android:layout_marginBottom="30dp"
             android:layout_above="@id/btnHistory"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignLeft="@+id/btnHistory"
+            android:layout_alignStart="@+id/btnHistory"
+            android:layout_alignRight="@+id/btnHistory"
+            android:layout_alignEnd="@+id/btnHistory" />
 
 
     </RelativeLayout>

@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.webonise.blooddonation.HistoryActivityWithSQL">
@@ -14,33 +15,29 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
          />
-   <!-- <View
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_below="@id/toolbar"
-        android:alpha="0.2"
-        android:background="@drawable/background">
-    </View>-->
-    <Button
-        style="@style/MyMaterialTheme"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="+"
-        android:textColor="@color/icons"
-        android:id="@+id/btnToHistoryData"
-        android:background="@drawable/fab"
-        android:layout_gravity="right"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        />
-
-    <ListView android:id="@+id/lvDetailsList"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbar">
+
+    <ListView android:id="@+id/lvDetailsList"
+        android:divider="@color/redBackground"
+        android:dividerHeight="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
         />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/add"
+        android:id="@+id/btnToHistoryData"
+        app:layout_anchor="@id/lvDetailsList"
+        app:layout_anchorGravity="bottom|right|end" />
+    </android.support.design.widget.CoordinatorLayout>
+
 
 </RelativeLayout>
