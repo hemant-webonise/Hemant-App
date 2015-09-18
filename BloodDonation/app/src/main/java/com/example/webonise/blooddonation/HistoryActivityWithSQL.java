@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class HistoryActivityWithSQL extends AppCompatActivity implements View.On
     FloatingActionButton btnToHistoryData;
     private ListView listView;
     private HistoryAdapter listAdapter;
+    ImageButton calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

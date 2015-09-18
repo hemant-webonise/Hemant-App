@@ -1,12 +1,15 @@
 package com.example.webonise.blooddonation.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.support.v7.internal.widget.AdapterViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,12 +91,21 @@ public class HistoryAdapter extends BaseAdapter{
         imgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, context.getString(R.string.future_functionality) + "Value : " + i, Toast.LENGTH_LONG).show();
-                historyDBAdapter = new HistoryDBAdapter(context);
-                int id = historyList.get(i).getId();
-                historyDBAdapter.deleteCertainDetail(id);
-                historyDBAdapter.close();
-                ((HistoryActivityWithSQL) context).onDeleted();
+
+                new AlertDialog.Builder(context)
+                        .setTitle(context.getString(R.string.delete_title))
+                        .setMessage(context.getString(R.string.sure_delete))
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                Toast.makeText(context, context.getString(R.string.future_functionality) + "Value : " + i, Toast.LENGTH_LONG).show();
+                                historyDBAdapter = new HistoryDBAdapter(context);
+                                int id = historyList.get(i).getId();
+                                historyDBAdapter.deleteCertainDetail(id);
+                                historyDBAdapter.close();
+                                ((HistoryActivityWithSQL) context).onDeleted();
+                            }
+                        }).create().show();
             }
         });
     }

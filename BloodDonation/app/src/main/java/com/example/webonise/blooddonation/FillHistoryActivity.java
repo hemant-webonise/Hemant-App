@@ -53,6 +53,7 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
     Bundle bundle;
     Toolbar toolbar;
     Cursor cursor;
+    ImageButton calendar;
 
 
     @Override
@@ -97,6 +98,8 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         setDailog();
         btnAddHistory.setOnClickListener(this);
         btnImage.setOnClickListener(this);
+        calendar=(ImageButton) findViewById(R.id.calendar);
+        calendar.setOnClickListener(this);
     }
 
     private void setDailog() {
@@ -256,6 +259,9 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                /* Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, LOAD_IMAGE_RESULTS);*/
                 selectImage();
+                break;
+            case R.id.calendar:
+                 datePickerDialog();
                 break;
 
             case R.id.btnAddHistory:
