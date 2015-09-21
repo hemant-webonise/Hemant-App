@@ -34,6 +34,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:src="@drawable/add"
+
         android:id="@+id/btnToHistoryData"
         app:layout_anchor="@id/lvDetailsList"
         app:layout_anchorGravity="bottom|right|end" />

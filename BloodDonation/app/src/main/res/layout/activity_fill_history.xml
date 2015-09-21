@@ -35,7 +35,6 @@
            style="@style/filler"
             android:id="@+id/tvDate"
             android:text="@string/select_date"
-            android:textColor="@color/primary_dark"
             android:textSize="20dp"
             android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/margin_registration"
