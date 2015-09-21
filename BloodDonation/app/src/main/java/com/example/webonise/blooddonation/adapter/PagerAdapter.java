@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.webonise.blooddonation.Fragments.ListFragmentDonor;
-import com.example.webonise.blooddonation.Fragments.MapFragment;
+import com.example.webonise.blooddonation.Fragments.MapFragmentDonor;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
@@ -28,7 +28,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return tab1;
             case 1:
               /*  BlankFragment tab2 = new BlankFragment();*/
-                MapFragment tab2 = new MapFragment();
+                MapFragmentDonor tab2 = new MapFragmentDonor();
                 return tab2;
             default:
                 return null;

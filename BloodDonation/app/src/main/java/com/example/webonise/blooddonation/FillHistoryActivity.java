@@ -15,7 +15,6 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -277,15 +276,17 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                         /*Cause error*/
                         personDatabaseHelper.updateCertainDetail(id, etLocation.getText().toString(), tvDate.getText().toString(), imagePath);
                         personDatabaseHelper.close();
-                        Intent returnBank = new Intent(this, HistoryActivityWithSQL.class);
-                        startActivity(returnBank);
+                        Intent returnBack = new Intent(this, HistorySQLActivity.class);
+                        startActivity(returnBack);
+                        finish();
                     } else {
                         imagePath = String.valueOf(R.drawable.pick);
                         HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
                         personDatabaseHelper.updateCertainDetail(id, etLocation.getText().toString(), tvDate.getText().toString(), imagePath);
                         personDatabaseHelper.close();
-                        Intent returnBank = new Intent(this, HistoryActivityWithSQL.class);
+                        Intent returnBank = new Intent(this, HistorySQLActivity.class);
                         startActivity(returnBank);
+                        finish();
                     }
                 } else {
                     HistoryDBAdapter personDatabaseHelper = new HistoryDBAdapter(this);
@@ -297,8 +298,9 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
                     personDatabaseHelper.close();
                     Toast.makeText(getApplicationContext(), getString(R.string.successDatabase), Toast.LENGTH_LONG).show();
                     btnAddHistory.setText("Added");
-                    Intent returnBank = new Intent(this, HistoryActivityWithSQL.class);
+                    Intent returnBank = new Intent(this, HistorySQLActivity.class);
                     startActivity(returnBank);
+                    finish();
                 }
 
                 break;

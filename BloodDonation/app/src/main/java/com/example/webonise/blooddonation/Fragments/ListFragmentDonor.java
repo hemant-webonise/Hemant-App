@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.webonise.blooddonation.R;
-import com.example.webonise.blooddonation.adapter.CustomListAdapterDonor;
+import com.example.webonise.blooddonation.adapter.ListDonorAdapter;
 import com.example.webonise.blooddonation.app.AppController;
 import com.example.webonise.blooddonation.app.Constant;
 import com.example.webonise.blooddonation.model.Donor;
@@ -24,7 +23,6 @@ import com.google.gson.Gson;
 
 import org.json.JSONArray;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListFragmentDonor extends Fragment {
@@ -34,7 +32,7 @@ public class ListFragmentDonor extends Fragment {
     private ProgressDialog loadingDialog;
     private List<Donor.DataEntity> dataEntities ;
     private ListView listView;
-    private CustomListAdapterDonor adapter;
+    private ListDonorAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +70,7 @@ public class ListFragmentDonor extends Fragment {
         Gson  gson= new Gson();
         Donor donorsObj = gson.fromJson(Constant.JSONURL, Donor.class);
         dataEntities = donorsObj.getData();
-        adapter = new CustomListAdapterDonor(getActivity(), dataEntities);
+        adapter = new ListDonorAdapter(getActivity(), dataEntities);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         AppController.getInstance().addToRequestQueue(DonorRec);

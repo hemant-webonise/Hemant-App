@@ -62,13 +62,13 @@
     <string name="subtitle">Lets do some good deeds..</string>
     <string name="add">History</string>
     <string name="select_date">Select Date</string>
-    <string name="allert_name">Fill Hospital name first</string>
+    <string name="allert_name">Please fill the Location</string>
     <string name="title_add_photo">Add Photo!</string>
     <string name="choose_photo">Take Photo</string>
     <string name="choose_laibrary">Choose from Library</string>
     <string name="cancel">Cancel</string>
     <string name="select_file">Select File</string>
-    <string name="sure_delete">Are you sure you sure you want to delete</string>
+    <string name="sure_delete">Are you sure you sure you want to delete?</string>
     <string name="delete_title">Deleting Detail</string>
 
 

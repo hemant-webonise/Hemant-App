@@ -106,7 +106,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 break;
            case R.id.btnHistory:
-               startActivity(new Intent(SearchActivity.this,HistoryActivityWithSQL.class));
+               startActivity(new Intent(SearchActivity.this,HistorySQLActivity.class));
 
 
         }
