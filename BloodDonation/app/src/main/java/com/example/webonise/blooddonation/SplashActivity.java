@@ -32,7 +32,7 @@ public class SplashActivity extends Activity {
                     if(pref.getInt(getString(R.string.checkFlag),1)==1)
                     {
                         editor.commit();
-                        Intent register = new Intent(SplashActivity.this,RegistrationActivity.class);
+                        Intent register = new Intent(SplashActivity.this,FillRegistrationActivity.class);
                         register.putExtra(getString(R.string.btnText),getString(R.string.Register));
                         startActivity(register);
 

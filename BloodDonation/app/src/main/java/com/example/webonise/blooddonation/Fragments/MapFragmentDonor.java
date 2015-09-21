@@ -73,9 +73,6 @@ public class MapFragmentDonor extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        /*btnOnMap = (Button) getView().findViewById(R.id.btnOnMap);*/
-       /* btnOnMap.setOnClickListener(this);*/
-
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(final Marker marker) {
@@ -132,12 +129,6 @@ public class MapFragmentDonor extends Fragment {
         // check if GPS enabled
         if (gpsTracker.canGetLocation()) {
             LatLng latLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
-            // Create a LatLng object for the current location
-           /* mMap.addMarker(new MarkerOptions()
-                            .position(latLng)
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.index)));*/
-
-
             CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(latLng,10);
             mMap.animateCamera(yourLocation);
             CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -164,48 +155,5 @@ public class MapFragmentDonor extends Fragment {
         }
 
     }
-
-   /* @Override
-    public void onMapClick(LatLng latLng) {
-        LatLng newLatLng = latLng;
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(newLatLng)
-                .title(newLatLng.toString()
-                );
-        mMap.addMarker(markerOptions);
-        double longitude = newLatLng.longitude;
-        double latitude = newLatLng.latitude;
-        getAddress(longitude, latitude);
-
-    }
-
-    private void getAddress(double longitude, double latitude) {
-        Geocoder geocoder = new Geocoder(getActivity(), Locale.ENGLISH);
-        try {
-            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
-            if (addresses != null) {
-                Address returnedAddress = addresses.get(0);
-                StringBuilder strReturnedAddress = new StringBuilder("Address:\n");
-                for (int i = 0; i < returnedAddress.getMaxAddressLineIndex(); i++) {
-                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
-                }
-                Toast.makeText(getActivity(), strReturnedAddress, Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getActivity(), "No Address returned!", Toast.LENGTH_LONG).show();
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Toast.makeText(getActivity(), "Cannot find!", Toast.LENGTH_LONG).show();
-        }
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
-    }
-*/
 
 }

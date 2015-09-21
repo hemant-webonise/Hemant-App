@@ -70,6 +70,11 @@
     <string name="select_file">Select File</string>
     <string name="sure_delete">Are you sure you sure you want to delete?</string>
     <string name="delete_title">Deleting Detail</string>
+    <string name="update_sutitle">Let\'s update...</string>
+    <string name="register_subtitle">Let\'s register...</string>
+    <string name="ranklabel">Rank</string>
+    <string name="blood_donation">"Blood Donation "</string>
+    <string name="blood_donation_title">What\'s your blood type ?</string>
 
 
 </resources>

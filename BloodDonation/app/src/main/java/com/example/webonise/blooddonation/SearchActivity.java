@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,7 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+
+import com.example.webonise.blooddonation.adapter.ImageAdapter;
+
 import com.example.webonise.blooddonation.app.Constant;
+import com.viewpagerindicator.UnderlinePageIndicator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,15 +29,39 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     Button btnSearch;
     Button btnHistory;
     GPSTracker gps;
+
+    ViewPager viewPager;
+    ImageAdapter adapter;
+    int[] images;
+    UnderlinePageIndicator mIndicator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_acitvity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         //Title and subtitle
-        toolbar.setTitle("Blood Donation ");
-        toolbar.setSubtitle("What's your blood type ?");
+        toolbar.setTitle(getString(R.string.blood_donation));
+        toolbar.setSubtitle(getString(R.string.blood_donation_title));
         setSupportActionBar(toolbar);
+
+        /*Add images Resource here and the will reflect on the App's home screen*/
+
+        images = new int[] { R.drawable.background , R.drawable.images, R.drawable.baner};
+
+        // Locate the ViewPager in viewpager_main.xml
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        // Pass results to ViewPagerAdapter Class
+        adapter = new ImageAdapter(SearchActivity.this, images);
+        // Binds the Adapter to the ViewPager
+        viewPager.setAdapter(adapter);
+
+        // ViewPager Indicator
+        mIndicator = (UnderlinePageIndicator) findViewById(R.id.indicator);
+        mIndicator.setFades(false);
+        mIndicator.setViewPager(viewPager);
+
         btnSearch=(Button)findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(this);
         btnHistory=(Button)findViewById(R.id.btnHistory);
@@ -146,4 +176,5 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }).create().show();
 
     }
+
 }

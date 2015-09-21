@@ -255,8 +255,6 @@ public class FillHistoryActivity extends AppCompatActivity implements View.OnCli
         switch (view.getId()) {
 
             case R.id.btnImage:
-               /* Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, LOAD_IMAGE_RESULTS);*/
                 selectImage();
                 break;
             case R.id.calendar:
